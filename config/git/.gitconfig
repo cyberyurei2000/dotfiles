@@ -1,0 +1,14 @@
+[user]
+	name = cyberyurei2000
+	email = 61709133+cyberyurei2000@users.noreply.github.com
+[core]
+	editor = nvim
+    autocrlf = false
+[init]
+    defaultBranch = master
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
+	ui = true

@@ -1,0 +1,214 @@
+{
+    "workbench.colorCustomizations": {
+        "[One Dark Pro]": {
+            "badge.background": "#ffffff10",
+            "editor.linkedEditingBackground": "#ffffff10",
+            //"tab.activeBorderTop": "#528bff"
+            "tab.activeBorderTop": "#4d78cc",
+            "tab.activeBorder": "#00000000",
+            "widget.shadow": "#0000008c"
+        },
+        "[Tokyo Night]": {
+            "widget.shadow": "#0000008c"
+        },
+        "[Tokyo Night Storm]": {
+            "widget.shadow": "#0000008c"
+        }
+    },
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.commandPalette.history": 0,
+    "workbench.editor.languageDetection": false,
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.layoutControl.type": "toggles",
+    "workbench.list.smoothScrolling": true,
+    "workbench.settings.editor": "json",
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.tips.enabled": false,
+    "breadcrumbs.enabled": false,
+    "debug.console.closeOnEnd": true,
+    "debug.showInStatusBar": "never",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.codeLens": false,
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.fontFamily": "JetBrains Mono, Cascadia Code, Ubuntu Mono, monospace",
+    "editor.fontLigatures": true,
+    "editor.inlayHints.enabled": "off",
+    "editor.lineHeight": 1.6,
+    "editor.linkedEditing": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.parameterHints.enabled": false,
+    "editor.renderWhitespace": "trailing",
+    "editor.rulers": [120],
+    "editor.semanticHighlighting.enabled": true,
+    "editor.scrollBeyondLastLine": false,
+    "editor.smoothScrolling": true,
+    "editor.stickyTabStops": true,
+    "editor.suggestSelection": "first",
+    "explorer.compactFolders": false,
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/__pycache__": true,
+        "**/.venv": true
+    },
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "launch": {
+        "configurations": [
+            {
+                "name": "Web",
+                "type": "chrome",
+                "request": "launch",
+                "webRoot": "${workspaceFolder}",
+                "file": "${workspaceFolder}/${fileBasenameNoExtension}.html"
+            },
+            {
+                "name": "Python",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Java",
+                "type": "java",
+                "request": "launch",
+                "mainClass": "${file}"
+            },
+            {
+                "name": "C/C++ (Windows)",
+                "type": "gdb",
+                "request": "launch",
+                "target": "./build/${fileBasenameNoExtension}.exe",
+                "cwd": "${workspaceRoot}",
+                "valuesFormatting": "parseText",
+            },
+            {
+                "name": "C/C++ (Linux)",
+                "type": "gdb",
+                "request": "launch",
+                "target": "./build/${fileBasenameNoExtension}.elf",
+                "cwd": "${workspaceRoot}",
+                "valuesFormatting": "parseText",
+            }
+        ]
+    },
+    "scm.alwaysShowRepositories": true,
+    "security.workspace.trust.enabled": false,
+    "settingsSync.ignoredExtensions": [
+        "ms-vscode-remote.remote-wsl"
+    ],
+    "terminal.integrated.confirmOnExit": "always",
+    "terminal.integrated.enableBell": true,
+    "terminal.integrated.fontFamily": "Noto Sans Mono, Cascadia Mono, Consolas, Ubuntu Mono, monospace",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": [
+                "-NoLogo"
+            ],
+        }
+    },
+    "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+    "terminal.integrated.smoothScrolling": true,
+    "update.showReleaseNotes": false,
+    "window.commandCenter": true,
+    "window.menuBarVisibility": "compact",
+    "window.dialogStyle": "custom",
+    "window.titleBarStyle": "custom",
+    "extensions.autoUpdate": false,
+    "extensions.ignoreRecommendations": true,
+    "html.format.indentInnerHtml": true,
+    "javascript.suggest.completeFunctionCalls": true,
+    "javascript.suggest.paths": false,
+    "javascript.validate.enable": false,
+    "typescript.suggest.paths": false,
+    "[java]": {
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.stickyScroll.enabled": true
+    },
+    "[javascript]": {
+        "editor.maxTokenizationLineLength": 2500,
+        "editor.semanticHighlighting.enabled": false
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "files.trimFinalNewlines": false
+    },
+    "[plaintext]": {
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "editor.wordWrap": "bounded"
+    },
+    "[python]": {
+        "editor.stickyScroll.enabled": true,
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "eeyore.yapf"
+    },
+    "[ruby]": {
+        "editor.tabSize": 2
+    },
+    "[shellscript]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": false
+        }
+    },
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "material-icon-theme.activeIconPack": "none",
+    "material-icon-theme.folders.theme": "classic",
+    "path-autocomplete.disableUpOneFolder": false,
+    "path-autocomplete.excludedItems": {
+        "**": {
+            "when": "**/*.html",
+            "context": "(src|href)=.*"
+        }
+    },
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.createEnvironment.contentButton": "show",
+    "java.debug.settings.enableRunDebugCodeLens": false,
+    "java.debug.settings.stepping.skipClasses": [
+        "$JDK",
+        "$Libraries"
+    ],
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "cmake.statusbar.advanced": {
+        "build": {
+            "visibility": "compact"
+        },
+        "status": {
+            "visibility": "compact"
+        },
+        "kit": {
+            "visibility": "compact"
+        },
+        "ctest": {
+            "visibility": "hidden"
+        }
+    },
+    "cmake.configureOnOpen": true,
+    "workbench.editor.empty.hint": "hidden",
+}

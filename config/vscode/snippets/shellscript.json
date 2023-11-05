@@ -1,0 +1,9 @@
+{
+	"Output #!/bin/sh": {
+		"prefix": "sh",
+		"body": [
+			"#!/bin/sh",
+		],
+		"description": "Output #!/bin/sh"
+	}
+}
