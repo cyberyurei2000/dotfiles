@@ -7,7 +7,8 @@ prompt_debian_setup() {
     PS2='%# '
 }
 prompt_default_setup() {
-    PS1='%B%F{blue}%n@%m%f%b%B %F{red}%~%f%b ¥ '
+    #PS1='%B%F{blue}%n@%m%f%b%B %F{red}%~%f%b ¥ '
+    PS1='%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ '
     PS2='¥ '
 }
 prompt_gentoo_setup() {
