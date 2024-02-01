@@ -6,15 +6,21 @@ function prompt {
         $path = @($path_arr[0], "..." + $path_arr[-3,-2,-1]) -join "\"
     }
 
-    #"PS:$env:COMPUTERNAME " + $path + "¥> "
+    #"PS:$([Environment]::MachineName) " + $path + "¥> "
     "PS " + $path + " ¥> "
 }
 
 # Options
 Set-PSReadLineOption -PredictionSource None -ErrorAction SilentlyContinue
 
+# Colors
+#$PSStyle.FileInfo.Directory = "`e[38;2;255;255;255m"
+$PSStyle.FileInfo.Directory = "`e[36m"
+
 # Alias
-Set-Alias -Name touch -Value New-Item
+if ($PSVersionTable.Platform -eq "Win32NT") {
+    Set-Alias -Name touch -Value New-Item
+}
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name vi -Value nvim
 

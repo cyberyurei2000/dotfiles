@@ -11,19 +11,26 @@ prompt_default_setup() {
     PS1='%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ '
     PS2='¥ '
 }
-prompt_gentoo_setup() {
-    PS1='%B%F{red}%n@%m%f %F{blue}%B%~%b%f %# '
-    PS2='%# '
+prompt_server_setup(){
+    PS1='%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ '
+    PS2='¥ '
 }
 prompt_mobile_setup() {
     PS1='%F{blue}%~%f%b ¥ '
     PS2='¥ '
 }
-prompt_themes+=( debian default gentoo mobile )
-prompt default
+prompt_themes+=( debian default server mobile )
+
+if [ "$(uname -m)" = "aarch64" ]; then
+    prompt server
+else
+    prompt default
+fi
 
 # History
-HISTFILE="$XDG_CONFIG_HOME/zsh/history"
+if [ "$(uname -m)" != "aarch64" ]; then
+    HISTFILE="$XDG_CONFIG_HOME/zsh/history"
+fi
 HISTSIZE=5000
 SAVEHIST=5000
 HISTORY_IGNORE='(ls|cd|pwd|exit|cd *|..)'
@@ -74,7 +81,7 @@ alias aria2='aria2c -s 16 -x 16'
 if command -v prime-run > /dev/null; then
     alias ffmpeg='prime-run ffmpeg'
 fi
-alias restartshell='plasmashell --replace &; disown'
+#alias restartshell='plasmashell --replace &; disown'
 alias killuser='pkill -KILL -u $USER'
 
 # Directory variables
@@ -95,6 +102,14 @@ function srm() {
         shred -u $1
     else
         return 1
+    fi
+}
+
+function restartshell() {
+    if command -v plasmashell > /dev/null; then
+        plasmashell --replace & disown
+    else
+        print "zsh: command not supported in this environment!"
     fi
 }
 
