@@ -15,7 +15,6 @@
             "widget.shadow": "#0000008c"
         }
     },
-    "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.commandPalette.history": 0,
     "workbench.editor.languageDetection": false,
@@ -47,6 +46,7 @@
     "editor.stickyTabStops": true,
     "editor.suggestSelection": "first",
     "explorer.compactFolders": false,
+    "debug.toolBarLocation": "commandCenter",
     "files.associations": {
         "iostream": "cpp"
     },
@@ -74,7 +74,7 @@
             },
             {
                 "name": "Python",
-                "type": "python",
+                "type": "debugpy",
                 "request": "launch",
                 "program": "${file}",
                 "console": "integratedTerminal"
@@ -195,20 +195,7 @@
         "$Libraries"
     ],
     "java.errors.incompleteClasspath.severity": "ignore",
-    "cmake.statusbar.advanced": {
-        "build": {
-            "visibility": "compact"
-        },
-        "status": {
-            "visibility": "compact"
-        },
-        "kit": {
-            "visibility": "compact"
-        },
-        "ctest": {
-            "visibility": "hidden"
-        }
-    },
     "cmake.configureOnOpen": true,
     "workbench.editor.empty.hint": "hidden",
+    "workbench.colorTheme": "One Dark Pro",
 }

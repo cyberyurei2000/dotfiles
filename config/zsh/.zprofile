@@ -1,4 +1,5 @@
 export EDITOR=nvim
+export VISUAL=nvim
 
 # Fcitx5
 export INPUT_METHOD=fcitx5
@@ -23,4 +24,3 @@ export WINEPREFIX="$XDG_DATA_HOME"/wine/default
 if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     MOZ_ENABLE_WAYLAND=1
 fi
-

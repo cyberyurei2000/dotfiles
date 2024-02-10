@@ -30,6 +30,8 @@ fi
 # History
 if [ "$(uname -m)" != "aarch64" ]; then
     HISTFILE="$XDG_CONFIG_HOME/zsh/history"
+else
+    HISTFILE="$HOME/.zsh_history"
 fi
 HISTSIZE=5000
 SAVEHIST=5000
@@ -52,7 +54,6 @@ zstyle ':completion:*' menu select
 
 # Directory options
 setopt auto_cd
-setopt cdable_vars
 
 # No match
 set nonomatch
@@ -83,9 +84,6 @@ if command -v prime-run > /dev/null; then
 fi
 #alias restartshell='plasmashell --replace &; disown'
 alias killuser='pkill -KILL -u $USER'
-
-# Directory variables
-personal='/mnt/DATA'
 
 # Custom commands
 function mkcd() {

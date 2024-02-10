@@ -59,6 +59,7 @@ vmap <C-S-v> <C-r><C-o>+
 " Theme
 set termguicolors
 silent! colorscheme tokyonight
+silent! highlight TabLineSel guibg=#f7768e
 
 " Filetype settings
 autocmd BufRead,BufEnter *.txt set wrap
