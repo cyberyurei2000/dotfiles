@@ -28,11 +28,7 @@ else
 fi
 
 # History
-if [ "$(uname -m)" != "aarch64" ]; then
-    HISTFILE="$XDG_CONFIG_HOME/zsh/history"
-else
-    HISTFILE="$HOME/.zsh_history"
-fi
+HISTFILE="$XDG_CONFIG_HOME/zsh/history"
 HISTSIZE=5000
 SAVEHIST=5000
 HISTORY_IGNORE='(ls|cd|pwd|exit|cd *|..)'
