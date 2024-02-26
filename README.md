@@ -10,6 +10,7 @@ My configuration files for Windows and Linux.
 
 ### Targets
 
+- fontconfig
 - git
 - mpv
 - nvim
