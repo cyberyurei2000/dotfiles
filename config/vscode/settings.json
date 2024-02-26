@@ -15,8 +15,10 @@
             "widget.shadow": "#0000008c"
         }
     },
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.commandPalette.history": 0,
+    "workbench.editor.empty.hint": "hidden",
     "workbench.editor.languageDetection": false,
     "workbench.editor.pinnedTabsOnSeparateRow": true,
     "workbench.layoutControl.type": "toggles",
@@ -31,7 +33,7 @@
     "editor.codeLens": false,
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.fontFamily": "JetBrains Mono, Cascadia Code, Ubuntu Mono, monospace",
+    "editor.fontFamily": "JetBrains Mono, Noto Sans Mono, monospace",
     "editor.fontLigatures": true,
     "editor.inlayHints.enabled": "off",
     "editor.lineHeight": 1.6,
@@ -110,7 +112,7 @@
     ],
     "terminal.integrated.confirmOnExit": "always",
     "terminal.integrated.enableBell": true,
-    "terminal.integrated.fontFamily": "Noto Sans Mono, Cascadia Mono, Consolas, Ubuntu Mono, monospace",
+    "terminal.integrated.fontFamily": "Noto Sans Mono, Cascadia Mono, Consolas, monospace",
     "terminal.integrated.fontSize": 13,
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
@@ -196,6 +198,4 @@
     ],
     "java.errors.incompleteClasspath.severity": "ignore",
     "cmake.configureOnOpen": true,
-    "workbench.editor.empty.hint": "hidden",
-    "workbench.colorTheme": "One Dark Pro",
 }
