@@ -50,16 +50,22 @@ inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
 
-" Copy and paste shortcut
-vmap <C-c> "+y
-vmap <C-S-x> "+c
-vmap <C-S-v> c<ESC>"+p
-vmap <C-S-v> <C-r><C-o>+
+" Shorcuts
+if has("clipboard")
+    vnoremap <C-c> "+y
+    vnoremap <C-X> "+x
+    vnoremap <C-V> "+gp
+endif
+noremap <C-A> ggVG
+noremap <C-Y> <C-R>
+noremap <C-Z> u
 
 " Theme
 set termguicolors
-silent! colorscheme tokyonight
-silent! highlight TabLineSel guibg=#f7768e
+silent! colorscheme tokyonight-moon
+silent! if g:colors_name=="tokyonight"
+    silent! highlight TabLineSel guibg=#f7768e
+endif
 
 " Filetype settings
 autocmd BufRead,BufEnter *.txt set wrap
@@ -70,7 +76,6 @@ autocmd BufRead,BufEnter * if &filetype == "" | set wrap | endif
 autocmd BufRead,BufEnter * if &filetype == "" | set linebreak | endif
 autocmd BufRead,BufEnter * if &filetype == "" | set noautoindent | endif
 autocmd BufRead,BufEnter * if &filetype == "" | set nocindent | endif
-
 autocmd BufRead,BufEnter *.ps1 set ff=dos
 
 " Mode
