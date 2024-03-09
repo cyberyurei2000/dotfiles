@@ -1,6 +1,2 @@
-install.sh
 install.ps1
-*.lua
-*.ttf
-config/vim/.vim
 ssh/

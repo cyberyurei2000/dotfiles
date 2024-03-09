@@ -7,7 +7,6 @@ prompt_debian_setup() {
     PS2='%# '
 }
 prompt_default_setup() {
-    #PS1='%B%F{blue}%n@%m%f%b%B %F{red}%~%f%b ¥ '
     PS1='%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ '
     PS2='¥ '
 }
@@ -15,11 +14,7 @@ prompt_server_setup(){
     PS1='%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ '
     PS2='¥ '
 }
-prompt_mobile_setup() {
-    PS1='%F{blue}%~%f%b ¥ '
-    PS2='¥ '
-}
-prompt_themes+=( debian default server mobile )
+prompt_themes+=( debian default server )
 
 if [ "$(uname -m)" = "aarch64" ]; then
     prompt server
@@ -74,7 +69,7 @@ alias vi=nvim
 alias vim=nvim
 alias svim=sudoedit
 alias ping='ping -c 5'
-alias aria2='aria2c -s 16 -x 16'
+alias aria2='aria2c'
 if command -v prime-run > /dev/null; then
     alias ffmpeg='prime-run ffmpeg'
 fi
