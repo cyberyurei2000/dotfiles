@@ -45,6 +45,7 @@
     "editor.semanticHighlighting.enabled": true,
     "editor.scrollBeyondLastLine": false,
     "editor.smoothScrolling": true,
+    "editor.stickyScroll.enabled": false,
     "editor.stickyTabStops": true,
     "editor.suggestSelection": "first",
     "explorer.compactFolders": false,
@@ -111,7 +112,6 @@
         "ms-vscode-remote.remote-wsl"
     ],
     "terminal.integrated.confirmOnExit": "always",
-    "terminal.integrated.enableBell": true,
     "terminal.integrated.fontFamily": "Noto Sans Mono, Cascadia Mono, Consolas, monospace",
     "terminal.integrated.fontSize": 13,
     "terminal.integrated.profiles.windows": {
@@ -139,7 +139,6 @@
     "typescript.suggest.paths": false,
     "[java]": {
         "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "editor.stickyScroll.enabled": true
     },
     "[javascript]": {
         "editor.maxTokenizationLineLength": 2500,
@@ -163,7 +162,6 @@
         "editor.wordWrap": "bounded"
     },
     "[python]": {
-        "editor.stickyScroll.enabled": true,
         "editor.formatOnType": true,
         "editor.defaultFormatter": "eeyore.yapf"
     },
@@ -198,4 +196,8 @@
     ],
     "java.errors.incompleteClasspath.severity": "ignore",
     "cmake.configureOnOpen": true,
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
+    "terminal.integrated.enableVisualBell": true,
 }

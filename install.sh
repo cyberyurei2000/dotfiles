@@ -35,7 +35,7 @@ setup_mpv() {
     mkdir -p "$XDG_CONFIG_HOME/mpv"
     MPV_CONFIG_PATH="$XDG_CONFIG_HOME/mpv"
 
-    ln -sf "$DIR/config/mpv/mpv.config" "$MPV_CONFIG_PATH/"
+    ln -sf "$DIR/config/mpv/mpv.conf" "$MPV_CONFIG_PATH/"
 }
 
 setup_nvim() {

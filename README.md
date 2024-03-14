@@ -1,6 +1,6 @@
 # dotfiles
 
-My configuration files for Windows and Linux.
+My configuration files and scripts for Windows and Linux.
 
 ![screenshot](./docs/screenshot.png)
 
@@ -23,6 +23,10 @@ My configuration files for Windows and Linux.
 ### Quick setup
 
 #### Linux
+
+> [!NOTE]
+> For now, there is only a Linux version of the quick install script.
+
 ```
 $ ./install.sh
 ```
@@ -40,11 +44,6 @@ setup_zsh
 #setup_mpv_scripts
 #setup_nvim_theme
 ```
-> [!NOTE]
-> The quick install script only supports aria2, fontconfig, git, mpv, nvim and zsh.
-
-> [!NOTE]
-> For now, there is only a Linux version of the quick install script.
 
 ### License
 
