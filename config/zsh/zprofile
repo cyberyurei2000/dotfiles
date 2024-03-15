@@ -1,6 +1,10 @@
 export EDITOR=nvim
 export VISUAL=nvim
 
+if [ -e "${HOME}/.local/bin" ]; then
+	export PATH=${HOME}/.local/bin:$PATH
+fi
+
 # Fcitx5
 export INPUT_METHOD=fcitx5
 export GTK_IM_MODULE=fcitx5
@@ -21,6 +25,8 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export WINEPREFIX="$XDG_DATA_HOME"/wine/default
 
 # Firefox
-if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
-    MOZ_ENABLE_WAYLAND=1
+if [ ! -t 1 ]; then
+    if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+        MOZ_ENABLE_WAYLAND=1
+    fi
 fi

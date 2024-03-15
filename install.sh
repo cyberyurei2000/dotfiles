@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) cyberyurei2000 2022-2024
+# Copyright (c) cyberyurei2000 2023-2024
 # Released under the 0BSD License
 # https://opensource.org/license/0bsd
 
@@ -48,6 +48,10 @@ setup_nvim() {
 setup_zsh() {
     mkdir -p "$XDG_CONFIG_HOME/zsh"
     ZSH_CONFIG_PATH="$XDG_CONFIG_HOME/zsh"
+
+    if [ ! -e "${HOME}/.local/bin" ]; then
+    	mkdir -p "${HOME}/.local/bin"
+    fi
 
     ln -sf "$DIR/config/zsh/zshrc" "$ZSH_CONFIG_PATH/.zshrc"
     ln -sf "$DIR/config/zsh/zprofile" "$ZSH_CONFIG_PATH/.zprofile"
