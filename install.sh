@@ -10,6 +10,10 @@ if [ "$XDG_CONFIG_HOME" = "" ]; then
     XDG_CONFIG_HOME="$HOME/.config"
 fi
 
+if [ "$XDG_DATA_HOME" = "" ]; then
+    XDG_DATA_HOME="$HOME/.local/share"
+fi
+
 setup_aria2() {
     mkdir -p "$XDG_CONFIG_HOME/aria2"
     ARIA_CONFIG_PATH="$XDG_CONFIG_HOME/aria2"
@@ -58,6 +62,23 @@ setup_zsh() {
     ln -sf "$DIR/config/zsh/zshenv" "$HOME/.zshenv"
 }
 
+setup_ssh() {
+    mkdir -p "$HOME/.ssh"
+    SSH_CONFIG_PATH="$HOME/.ssh"
+
+    if [ -f "$DIR/config/ssh/config" ]; then
+        ln -sf "$DIR/config/ssh/config" "$SSH_CONFIG_PATH/"
+    else
+        printf "ERROR: Failed to setup SSH! Configuration file not found."
+    fi
+}
+
+setup_wineprefix() {
+    if [ ! -d "$XDG_DATA_HOME/wine" ]; then
+        mkdir -p "$XDG_DATA_HOME/wine"
+    fi
+}
+
 setup_mpv_scripts() {
     MPV_CONFIG_PATH="$XDG_CONFIG_HOME/mpv"
 
@@ -91,5 +112,7 @@ setup_git
 setup_mpv
 setup_nvim
 setup_zsh
+#setup_ssh
+#setup_wineprefix
 setup_mpv_scripts
 setup_nvim_theme

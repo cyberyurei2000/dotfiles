@@ -22,6 +22,8 @@ else
     prompt default
 fi
 
+PROMPT_EOL_MARK=""
+
 # History
 HISTFILE="$XDG_CONFIG_HOME/zsh/history"
 HISTSIZE=5000
@@ -78,7 +80,7 @@ alias killuser='pkill -KILL -u $USER'
 # Custom commands
 function mkcd() {
     if [[ -d $1 ]]; then
-        print -P "zsh: \"$1\" already exists!"
+        printf -P "zsh: \"$1\" already exists!"
         cd $1
     else
         mkdir -p $1 && cd $1
@@ -97,7 +99,7 @@ function restartshell() {
     if command -v plasmashell > /dev/null; then
         plasmashell --replace & disown
     else
-        print "zsh: command not supported in this environment!"
+        printf "zsh: command not supported in this environment!"
     fi
 }
 
