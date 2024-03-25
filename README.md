@@ -24,11 +24,16 @@ My configuration files and scripts for Windows and Linux.
 
 #### Linux
 
-> [!NOTE]
-> For now, there is only a Linux version of the quick install script.
-
 ```
 $ ./install.sh
+```
+
+#### Windows
+
+This script is only compatible with PowerShell 7.
+
+```
+> ./install.ps1
 ```
 
 If you want to disable the configuration of a specific target, simply comment out the function call at the end of the install script.

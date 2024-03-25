@@ -18,7 +18,7 @@ setup_aria2() {
     mkdir -p "$XDG_CONFIG_HOME/aria2"
     ARIA_CONFIG_PATH="$XDG_CONFIG_HOME/aria2"
 
-    ln -sf "$DIR/config/aria2/aria2.conf" "$ARIA_CONFIG_PATH/"
+    ln -sf "$DIR/config/aria2/aria2.conf" "$ARIA_CONFIG_PATH/aria2.conf"
 }
 
 setup_fontconfig() {
@@ -39,14 +39,14 @@ setup_mpv() {
     mkdir -p "$XDG_CONFIG_HOME/mpv"
     MPV_CONFIG_PATH="$XDG_CONFIG_HOME/mpv"
 
-    ln -sf "$DIR/config/mpv/mpv.conf" "$MPV_CONFIG_PATH/"
+    ln -sf "$DIR/config/mpv/mpv.conf" "$MPV_CONFIG_PATH/mpv.config"
 }
 
 setup_nvim() {
     mkdir -p "$XDG_CONFIG_HOME/nvim"
     NVIM_CONFIG_PATH="$XDG_CONFIG_HOME/nvim"
 
-    ln -sf "$DIR/config/nvim/init.vim" "$NVIM_CONFIG_PATH/"
+    ln -sf "$DIR/config/nvim/init.vim" "$NVIM_CONFIG_PATH/init.vim"
 }
 
 setup_zsh() {
@@ -67,7 +67,7 @@ setup_ssh() {
     SSH_CONFIG_PATH="$HOME/.ssh"
 
     if [ -f "$DIR/config/ssh/config" ]; then
-        ln -sf "$DIR/config/ssh/config" "$SSH_CONFIG_PATH/"
+        ln -sf "$DIR/config/ssh/config" "$SSH_CONFIG_PATH/config"
     else
         printf "ERROR: Failed to setup SSH! Configuration file not found."
     fi

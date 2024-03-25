@@ -1,6 +1,6 @@
 # PROMPT
 function prompt {
-    $path = Get-Location
+    $path = [Environment]::CurrentDirectory
     $path_arr = $path.path.Split("\")
     if ($path_arr.count -gt 4) {
         $path = @($path_arr[0], "..." + $path_arr[-3,-2,-1]) -join "\"
@@ -27,9 +27,7 @@ Set-Alias -Name vi -Value nvim
 Remove-Item Alias:curl -ErrorAction SilentlyContinue
 
 # Custom commands
-function mkcd {
-    Param ($dir)
-
+function mkcd($dir) {
     New-Item -Type Directory -Path $dir
     Set-Location -Path $dir
 }
@@ -39,12 +37,16 @@ function .. {
 }
 
 function grep($regex, $dir) {
-	if ($dir) {
+	if($dir) {
 		Get-ChildItem $dir | Select-String $regex
 		return
 	}
 
 	$input | Select-String $regex
+}
+
+function pwd {
+    [Environment]::CurrentDirectory
 }
 
 function md5sum {
