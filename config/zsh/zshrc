@@ -74,7 +74,7 @@ alias aria2="aria2c"
 if command -v prime-run > /dev/null; then
     alias ffmpeg="prime-run ffmpeg"
 fi
-alias code="GTK_USE_PORTAL=1 code"
+alias code="GTK_USE_PORTAL=1 ELECTRON_TRASH=kioclient code"
 
 # Custom commands
 function mkcd() {
