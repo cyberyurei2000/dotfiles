@@ -3,16 +3,16 @@ autoload -Uz promptinit
 promptinit
 
 prompt_debian_setup() {
-    PS1='%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b%# '
-    PS2='%# '
+    PS1="%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b%# "
+    PS2="%# "
 }
 prompt_default_setup() {
-    PS1='%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ '
-    PS2='¥ '
+    PS1="%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ "
+    PS2="¥ "
 }
 prompt_server_setup(){
-    PS1='%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ '
-    PS2='¥ '
+    PS1="%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ "
+    PS2="¥ "
 }
 prompt_themes+=( debian default server )
 
@@ -28,22 +28,22 @@ PROMPT_EOL_MARK=""
 HISTFILE="$XDG_CONFIG_HOME/zsh/history"
 HISTSIZE=5000
 SAVEHIST=5000
-HISTORY_IGNORE='(ls|cd|pwd|exit|cd *|..)'
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd *|..)"
 setopt share_history
 setopt histignorealldups
 
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey '^[[A' history-beginning-search-backward-end
-bindkey '^[[B' history-beginning-search-forward-end
-bindkey '^R' history-incremental-pattern-search-backward
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+bindkey "^R" history-incremental-pattern-search-backward
 
 # Completion
 autoload -Uz compinit
 compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' menu select
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Z}"
+zstyle ":completion:*" menu select
 
 # Directory options
 setopt auto_cd
@@ -52,30 +52,29 @@ setopt auto_cd
 set nonomatch
 set nomatch
 
-# Color
-alias ls='ls --color=auto'
-alias dir='dir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
 # Alias
-alias ll='ls -la'
-alias la='ls -a'
-alias mv='mv -i'
-alias rm='rm -i'
-alias ps='ps --sort=start_time'
-alias df='df -h'
-alias free='free -m'
+alias ls="ls --color=auto --group-directories-first"
+alias ll="ls -la"
+alias la="ls -a"
+alias dir="dir --color=auto"
+alias mv="mv -i"
+alias rm="rm -i"
+alias ps="ps --sort=start_time"
+alias df="df -h"
+alias free="free -m"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias killuser="pkill -KILL -u $USER"
 alias vi=nvim
 alias vim=nvim
 alias svim=sudoedit
-alias ping='ping -c 5'
-alias aria2='aria2c'
+alias ping="ping -c 5"
+alias aria2="aria2c"
 if command -v prime-run > /dev/null; then
-    alias ffmpeg='prime-run ffmpeg'
+    alias ffmpeg="prime-run ffmpeg"
 fi
-alias killuser='pkill -KILL -u $USER'
+alias code="GTK_USE_PORTAL=1 code"
 
 # Custom commands
 function mkcd() {
@@ -106,11 +105,11 @@ function restartshell() {
 # Custom functions
 function clear-screen-scrollback() {
     echoti civis >"$TTY"
-    printf '%b' '\e[H\e[2J' >"$TTY"
+    printf "%b" "\e[H\e[2J" >"$TTY"
     zle .reset-prompt
     zle -R
-    printf '%b' '\e[3J' >"$TTY"
+    printf "%b" "\e[3J" >"$TTY"
     echoti cnorm >"$TTY"
 }
 zle -N clear-screen-scrollback
-bindkey '^L' clear-screen-scrollback
+bindkey "^L" clear-screen-scrollback

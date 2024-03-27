@@ -99,4 +99,3 @@ function! StatuslineMode()
         return "SHELL"
     endif
 endfunction
-
