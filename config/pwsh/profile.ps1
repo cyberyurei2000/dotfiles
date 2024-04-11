@@ -23,6 +23,7 @@ if ($PSVersionTable.Platform -eq "Win32NT") {
 }
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name vi -Value nvim
+Set-Alias -Name neofetch -Value winfetch
 
 Remove-Item Alias:curl -ErrorAction SilentlyContinue
 
