@@ -6,6 +6,7 @@ $Dir = [Environment]::CurrentDirectory
 
 $AppData = [Environment]::GetFolderPath('ApplicationData')
 $LocalAppData = [Environment]::GetFolderPath('LocalApplicationData')
+$Temp = $env:TEMP
 $IsDiskC = $Dir | Select-String -Pattern "C:"
 
 function Setup-Aria2 {
@@ -68,8 +69,23 @@ function Setup-Pwsh {
     }
 }
 
+function Setup-Mpv-Scripts {
+    $MpvConfigPath = "$AppData\mpv"
+
+    New-Item -Path "$MpvConfigPath" -Name "scripts" -ItemType "Directory" -Force
+    New-Item -Path "$MpvConfigPath" -Name "fonts" -ItemType "Directory" -Force
+
+    git clone "https://github.com/cyl0/ModernX.git" "$Temp\ModernX"
+    Move-Item -Path "$Temp\ModernX\modernx.lua" -Destination "$MpvConfigPath\scripts\"
+    Move-Item -Path "$Temp\ModernX\Material-Design-Iconic-Font.ttf" -Destination "$MpvConfigPath\fonts\"
+
+    git clone "https://github.com/po5/thumbfast.git" "$Temp\thumbfast"
+    Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\"
+}
+
 Setup-Aria2
 Setup-Git
 Setup-Mpv
 Setup-Nvim
 Setup-Pwsh
+Setup-Mpv-Scripts

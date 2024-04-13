@@ -1,13 +1,21 @@
+# Windows Admin
+$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = New-Object Security.Principal.WindowsPrincipal $identity
+$isAdmin = $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
 # PROMPT
 function prompt {
-    $path = [Environment]::CurrentDirectory
+    $path = $(Get-Location)
     $path_arr = $path.path.Split("\")
     if ($path_arr.count -gt 4) {
         $path = @($path_arr[0], "..." + $path_arr[-3,-2,-1]) -join "\"
     }
 
-    #"PS:$([Environment]::MachineName) " + $path + "¥> "
-    "PS " + $path + " ¥> "
+    if($isAdmin) {
+        "PS " + $path + " #> "
+    } else {
+        "PS " + $path + " ¥> "
+    }
 }
 
 # Options
@@ -17,20 +25,34 @@ Set-PSReadLineOption -PredictionSource None -ErrorAction SilentlyContinue
 #$PSStyle.FileInfo.Directory = "`e[38;2;255;255;255m"
 $PSStyle.FileInfo.Directory = "`e[36m"
 
+# Autocomplete
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+# Shortcuts
+Set-PSReadLineKeyHandler -Key Ctrl+u -Function BackwardDeleteLine
+
 # Alias
-if ($PSVersionTable.Platform -eq "Win32NT") {
-    Set-Alias -Name touch -Value New-Item
-}
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name vi -Value nvim
 Set-Alias -Name neofetch -Value winfetch
+Set-Alias -Name aria2 -Value aria2c
 
 Remove-Item Alias:curl -ErrorAction SilentlyContinue
 
 # Custom commands
-function mkcd($dir) {
-    New-Item -Type Directory -Path $dir
-    Set-Location -Path $dir
+function touch($file) {
+    "" | Out-File $file -Encoding ASCII
+}
+
+function mkcd($file) {
+    New-Item -Type Directory -Path $file
+    Set-Location -Path $file
+}
+
+function pwd {
+    [Environment]::CurrentDirectory
 }
 
 function .. {
@@ -46,8 +68,12 @@ function grep($regex, $dir) {
 	$input | Select-String $regex
 }
 
-function pwd {
-    [Environment]::CurrentDirectory
+function df {
+    Get-Volume
+}
+
+function pkill($name) {
+    Get-Process $name -ErrorAction SilentlyContinue | Stop-Process
 }
 
 function md5sum {
@@ -60,8 +86,4 @@ function sha1sum {
 
 function sha256sum {
     Get-FileHash -Algorithm SHA256 $args
-}
-
-function aria2 {
-    aria2c -s 16 -x 16
 }
