@@ -41,9 +41,9 @@ function Setup-Mpv {
     $MpvConfigPath = "$AppData\mpv"
 
     if($IsDiskC -ne $null) {
-        New-Item -Path "$MpvConfigPath" -Name "mpv.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\mpv.conf" -Force
+        New-Item -Path "$MpvConfigPath" -Name "mpv.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\mpv_windows.conf" -Force
     } else {
-        Copy-Item -Path "$Dir\config\mpv\mpv.conf" -Destination "$MpvConfigPath\mpv.conf" -Force
+        Copy-Item -Path "$Dir\config\mpv\mpv_windows.conf" -Destination "$MpvConfigPath\mpv.conf" -Force
     }
 }
 
@@ -69,6 +69,24 @@ function Setup-Pwsh {
     }
 }
 
+function Setup-Ssh {
+    $File = New-Item -Path "$HOME" -Name ".ssh" -ItemType "Directory" -Force
+    $File.attributes = "Hidden"
+    $SshConfigPath = "$HOME\.ssh"
+
+    if(Test-Path -Path "$Dir\config\ssh") {
+        if($IsDiskC -ne $null) {
+            New-Item -Path "$SshConfigPath" -Name "config" -ItemType "HardLink" -Target "$Dir\config\ssh\config" -Force
+        } else {
+            Copy-Item -Path "$Dir\config\ssh\config" -Destination "$SshConfigPath\config" -Force
+        }
+    } else {
+        [Console]::ForegroundColor = "red"
+        [Console]::Error.WriteLine("ERROR: Failed to setup SSH! Configuration file not found.")
+        [Console]::ResetColor()
+    }
+}
+
 function Setup-Mpv-Scripts {
     $MpvConfigPath = "$AppData\mpv"
 
@@ -88,4 +106,5 @@ Setup-Git
 Setup-Mpv
 Setup-Nvim
 Setup-Pwsh
+#Setup-Ssh
 Setup-Mpv-Scripts
