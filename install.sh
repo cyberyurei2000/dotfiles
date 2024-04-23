@@ -66,8 +66,8 @@ setup_ssh() {
     mkdir -p "$HOME/.ssh"
     SSH_CONFIG_PATH="$HOME/.ssh"
 
-    if [ -f "$DIR/config/ssh/config" ]; then
-        ln -sf "$DIR/config/ssh/config" "$SSH_CONFIG_PATH/config"
+    if [ -f "$DIR/config/ssh/config_linux" ]; then
+        ln -sf "$DIR/config/ssh/config_linux" "$SSH_CONFIG_PATH/config"
     else
         printf "ERROR: Failed to setup SSH! Configuration file not found."
     fi
@@ -112,7 +112,7 @@ setup_git
 setup_mpv
 setup_nvim
 setup_zsh
-#setup_ssh
-#setup_wineprefix
+setup_ssh
+setup_wineprefix
 setup_mpv_scripts
 setup_nvim_theme

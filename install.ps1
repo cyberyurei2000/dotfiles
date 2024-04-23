@@ -74,11 +74,11 @@ function Setup-Ssh {
     $File.attributes = "Hidden"
     $SshConfigPath = "$HOME\.ssh"
 
-    if(Test-Path -Path "$Dir\config\ssh") {
+    if(Test-Path -Path "$Dir\config\ssh\config_windows") {
         if($IsDiskC -ne $null) {
-            New-Item -Path "$SshConfigPath" -Name "config" -ItemType "HardLink" -Target "$Dir\config\ssh\config" -Force
+            New-Item -Path "$SshConfigPath" -Name "config" -ItemType "HardLink" -Target "$Dir\config\ssh\config_windows" -Force
         } else {
-            Copy-Item -Path "$Dir\config\ssh\config" -Destination "$SshConfigPath\config" -Force
+            Copy-Item -Path "$Dir\config\ssh\config_windows" -Destination "$SshConfigPath\config" -Force
         }
     } else {
         [Console]::ForegroundColor = "red"
@@ -106,5 +106,5 @@ Setup-Git
 Setup-Mpv
 Setup-Nvim
 Setup-Pwsh
-#Setup-Ssh
+Setup-Ssh
 Setup-Mpv-Scripts
