@@ -9,6 +9,7 @@ My configuration files and scripts for Windows and Linux.
 ### Targets
 
 - aria2
+- fastfetch
 - fontconfig
 - git
 - mpv

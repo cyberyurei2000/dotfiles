@@ -69,6 +69,19 @@ function Setup-Pwsh {
     }
 }
 
+function Setup-Fastfetch() {
+    $File = New-Item -Path "$HOME" -Name ".config" -ItemType "Directory" -Force
+    $File.attributes = "Hidden"
+    New-Item -Path "$HOME\.config" -Name "fastfetch" -ItemType "Directory" -Force
+    $FetchConfigPath = "$HOME\.config\fastfetch"
+
+    if($IsDiskC -ne $null) {
+        New-Item -Path "$FetchConfigPath" -Name "config.jsonc" -ItemType "HardLink" -Target "$Dir\config\fastfetch\config.jsonc" -Force
+    } else {
+        Copy-Item -Path "$Dir\config\fastfetch\config.jsonc" -Destination "$FetchConfigPath\config.jsonc" -Force
+    }
+}
+
 function Setup-Ssh {
     $File = New-Item -Path "$HOME" -Name ".ssh" -ItemType "Directory" -Force
     $File.attributes = "Hidden"
@@ -106,5 +119,6 @@ Setup-Git
 Setup-Mpv
 Setup-Nvim
 Setup-Pwsh
+Setup-Fastfetch
 Setup-Ssh
 Setup-Mpv-Scripts

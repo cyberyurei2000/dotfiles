@@ -36,7 +36,6 @@ Set-PSReadLineKeyHandler -Key Ctrl+u -Function BackwardDeleteLine
 # Alias
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name vi -Value nvim
-Set-Alias -Name neofetch -Value winfetch
 Set-Alias -Name aria2 -Value aria2c
 
 Remove-Item Alias:curl -ErrorAction SilentlyContinue

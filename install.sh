@@ -62,6 +62,13 @@ setup_zsh() {
     ln -sf "$DIR/config/zsh/zshenv" "$HOME/.zshenv"
 }
 
+setup_fastfetch() {
+    mkdir -p "$XDG_CONFIG_HOME/fastfetch"
+    FETCH_CONFIG_PATH="$XDG_CONFIG_HOME/fastfetch"
+
+    ln -sf "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
+}
+
 setup_ssh() {
     mkdir -p "$HOME/.ssh"
     SSH_CONFIG_PATH="$HOME/.ssh"
@@ -112,6 +119,7 @@ setup_git
 setup_mpv
 setup_nvim
 setup_zsh
+setup_fastfetch
 setup_ssh
 setup_wineprefix
 setup_mpv_scripts
