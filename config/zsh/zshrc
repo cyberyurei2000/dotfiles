@@ -75,6 +75,7 @@ if command -v prime-run > /dev/null; then
     alias ffmpeg="prime-run ffmpeg"
 fi
 alias code="GTK_USE_PORTAL=1 ELECTRON_TRASH=kioclient code"
+alias sysinfo="fastfetch && echo"
 
 # Custom commands
 function mkcd() {

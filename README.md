@@ -2,10 +2,6 @@
 
 My configuration files and scripts for Windows and Linux.
 
-[![OS:Linux](https://img.shields.io/badge/OS-Linux-blue?style=flat-square&logo=linux)](https://kernel.org)
-[![OS:Windows](https://img.shields.io/badge/OS-Windows-blue?style=flat-square&logo=windows11)](https://www.microsoft.com/windows)
-[![License](https://img.shields.io/badge/License-BSD%20Zero%20Clause-red?style=flat-square&)](./LICENSE)
-
 ### Targets
 
 - aria2
@@ -29,7 +25,7 @@ $ ./install.sh
 
 #### Windows
 
-This script is only compatible with PowerShell 7.
+This script only suports PowerShell version 7 or above.
 
 ```
 > ./install.ps1

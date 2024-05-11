@@ -1,20 +1,20 @@
 # Windows Admin
-$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = New-Object Security.Principal.WindowsPrincipal $identity
-$isAdmin = $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+$Identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$Principal = New-Object Security.Principal.WindowsPrincipal $Identity
+$IsAdmin = $Principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
 # PROMPT
-function prompt {
-    $path = $(Get-Location)
-    $path_arr = $path.path.Split("\")
-    if ($path_arr.count -gt 4) {
-        $path = @($path_arr[0], "..." + $path_arr[-3,-2,-1]) -join "\"
+function Prompt {
+    $Path = $(Get-Location)
+    $Path_arr = $Path.path.Split("\")
+    if($Path_arr.count -gt 4) {
+        $Path = @($Path_arr[0], "..." + $Path_arr[-3,-2,-1]) -join "\"
     }
 
-    if($isAdmin) {
-        "PS " + $path + " #> "
+    if($IsAdmin) {
+        "PS " + $Path + " #> "
     } else {
-        "PS " + $path + " ¥> "
+        "PS " + $Path + " ¥> "
     }
 }
 
@@ -41,13 +41,39 @@ Set-Alias -Name aria2 -Value aria2c
 Remove-Item Alias:curl -ErrorAction SilentlyContinue
 
 # Custom commands
-function touch($file) {
-    "" | Out-File $file -Encoding ASCII
+function ll($Path) {
+    if($Path -eq "") {
+        $Path = "."
+    }
+    Get-ChildItem -Path $Path -Force | Format-Table -AutoSize
 }
 
-function mkcd($file) {
-    New-Item -Type Directory -Path $file
-    Set-Location -Path $file
+function mkdir($Path) {
+    $File = New-Item -Path $Path -ItemType "Directory"
+    if(Test-Path -Path $Path) {
+        if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
+            $File.attributes = "Hidden"
+        }
+    }
+}
+
+function mkcd($Path) {
+    $File = New-Item -Path $Path -ItemType "Directory"
+    if(Test-Path -Path $Path) {
+        if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
+            $File.attributes = "Hidden"
+        }
+        Set-Location -Path $Path
+    }
+}
+
+function touch($Path) {
+    $File = New-Item -Path $Path -ItemType "File"
+    if(Test-Path -Path $Path) {
+        if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
+            $File.attributes = "Hidden"
+        }
+    }
 }
 
 function pwd {
@@ -58,31 +84,34 @@ function .. {
     Set-Location -Path ..
 }
 
-function grep($regex, $dir) {
-	if($dir) {
-		Get-ChildItem $dir | Select-String $regex
+function grep($Regex, $Path) {
+	if($Path) {
+		Get-ChildItem $Path | Select-String $Regex
 		return
 	}
-
-	$input | Select-String $regex
+	$Input | Select-String $Regex
 }
 
 function df {
     Get-Volume
 }
 
-function pkill($name) {
-    Get-Process $name -ErrorAction SilentlyContinue | Stop-Process
+function pkill($Name) {
+    Get-Process $Name -ErrorAction SilentlyContinue | Stop-Process
 }
 
 function md5sum {
-    Get-FileHash -Algorithm MD5 $args
+    Get-FileHash -Algorithm MD5 $Args
 }
 
 function sha1sum {
-    Get-FileHash -Algorithm SHA1 $args
+    Get-FileHash -Algorithm SHA1 $Args
 }
 
 function sha256sum {
-    Get-FileHash -Algorithm SHA256 $args
+    Get-FileHash -Algorithm SHA256 $Args
+}
+
+function sysinfo {
+    fastfetch && Write-Host ""
 }
