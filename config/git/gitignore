@@ -1,0 +1,23 @@
+# Windows
+[Dd]esktop.ini
+[Tt]humbs.db
+$RECYCLE.BIN
+*.stackdump
+
+# Linux
+lost+found
+.directory
+.fuse_hidden*
+.Trash-*
+.nfs*
+
+# Python
+.venv
+__pycache__
+
+# Editors
+.vscode
+*.swp
+*.~
+*.un~
+*.bak

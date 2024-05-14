@@ -33,6 +33,7 @@ setup_git() {
     GIT_CONFIG_PATH="$XDG_CONFIG_HOME/git"
 
     ln -sf "$DIR/config/git/gitconfig" "$GIT_CONFIG_PATH/config"
+    ln -sf "$DIR/config/git/gitignore" "$GIT_CONFIG_PATH/ignore"
 }
 
 setup_mpv() {
@@ -53,7 +54,7 @@ setup_zsh() {
     mkdir -p "$XDG_CONFIG_HOME/zsh"
     ZSH_CONFIG_PATH="$XDG_CONFIG_HOME/zsh"
 
-    if [ ! -e "${HOME}/.local/bin" ]; then
+    if [ ! -d "${HOME}/.local/bin" ]; then
     	mkdir -p "${HOME}/.local/bin"
     fi
 

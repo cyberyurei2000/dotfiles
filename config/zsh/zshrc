@@ -53,7 +53,7 @@ set nonomatch
 set nomatch
 
 # Alias
-alias ls="ls --color=auto --group-directories-first"
+alias ls="ls --color=auto --group-directories-first --show-control-chars"
 alias ll="ls -la"
 alias la="ls -a"
 alias dir="dir --color=auto"
@@ -65,17 +65,20 @@ alias free="free -m"
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
+alias echo="echo -e"
 alias killuser="pkill -KILL -u $USER"
 alias vi=nvim
 alias vim=nvim
 alias svim=sudoedit
 alias ping="ping -c 5"
 alias aria2="aria2c"
+alias sysinfo="fastfetch && echo"
 if command -v prime-run > /dev/null; then
     alias ffmpeg="prime-run ffmpeg"
 fi
-alias code="GTK_USE_PORTAL=1 ELECTRON_TRASH=kioclient code"
-alias sysinfo="fastfetch && echo"
+if command -v kioclient > /dev/null; then
+    alias code="GTK_USE_PORTAL=1 ELECTRON_TRASH=kioclient code"
+fi
 
 # Custom commands
 function mkcd() {

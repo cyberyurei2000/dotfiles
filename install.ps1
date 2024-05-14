@@ -31,8 +31,10 @@ function Setup-Git {
 
     if($IsDiskC -ne $null) {
         New-Item -Path "$GitConfigPath" -Name "config" -ItemType "HardLink" -Target "$Dir\config\git\gitconfig" -Force
+        New-Item -Path "$GitConfigPath" -Name "ignore" -ItemType "HardLink" -Target "$Dir\config\git\gitignore" -Force
     } else {
         Copy-Item -Path "$Dir\config\git\gitconfig" -Destination "$GitConfigPath\config" -Force
+        Copy-Item -Path "$Dir\config\git\gitignore" -Destination "$GitConfigPath\ignore" -Force
     }
 }
 

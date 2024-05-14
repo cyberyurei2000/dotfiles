@@ -20,6 +20,7 @@ function Prompt {
 
 # Options
 Set-PSReadLineOption -PredictionSource None -ErrorAction SilentlyContinue
+$env:POWERSHELL_TELEMETRY_OPTOUT = 1
 
 # Colors
 #$PSStyle.FileInfo.Directory = "`e[38;2;255;255;255m"
@@ -37,8 +38,9 @@ Set-PSReadLineKeyHandler -Key Ctrl+u -Function BackwardDeleteLine
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name vi -Value nvim
 Set-Alias -Name aria2 -Value aria2c
-
 Remove-Item Alias:curl -ErrorAction SilentlyContinue
+Remove-Item Alias:wget -ErrorAction SilentlyContinue
+Remove-Item Alias:mkdir -ErrorAction SilentlyContinue
 
 # Custom commands
 function ll($Path) {
@@ -58,12 +60,17 @@ function mkdir($Path) {
 }
 
 function mkcd($Path) {
-    $File = New-Item -Path $Path -ItemType "Directory"
     if(Test-Path -Path $Path) {
-        if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
-            $File.attributes = "Hidden"
-        }
+        Write-Host "pwsh: \"$Path\" already exists!" -ForegroundColor "Yellow"
         Set-Location -Path $Path
+    } else {
+        $File = New-Item -Path $Path -ItemType "Directory"
+        if(Test-Path -Path $Path) {
+            if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
+                $File.attributes = "Hidden"
+            }
+            Set-Location -Path $Path
+        }
     }
 }
 
@@ -76,10 +83,6 @@ function touch($Path) {
     }
 }
 
-function pwd {
-    [Environment]::CurrentDirectory
-}
-
 function .. {
     Set-Location -Path ..
 }
@@ -90,6 +93,10 @@ function grep($Regex, $Path) {
 		return
 	}
 	$Input | Select-String $Regex
+}
+
+function restartshell {
+    Stop-Process -ProcessName explorer
 }
 
 function df {
