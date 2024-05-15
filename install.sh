@@ -6,11 +6,11 @@
 
 DIR=$(pwd)
 
-if [ "$XDG_CONFIG_HOME" = "" ]; then
+if [ "$XDG_CONFIG_HOME" == "" ]; then
     XDG_CONFIG_HOME="$HOME/.config"
 fi
 
-if [ "$XDG_DATA_HOME" = "" ]; then
+if [ "$XDG_DATA_HOME" == "" ]; then
     XDG_DATA_HOME="$HOME/.local/share"
 fi
 
