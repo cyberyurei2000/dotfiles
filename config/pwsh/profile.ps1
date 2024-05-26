@@ -23,7 +23,6 @@ Set-PSReadLineOption -PredictionSource None -ErrorAction SilentlyContinue
 $env:POWERSHELL_TELEMETRY_OPTOUT = 1
 
 # Colors
-#$PSStyle.FileInfo.Directory = "`e[38;2;255;255;255m"
 $PSStyle.FileInfo.Directory = "`e[36m"
 
 # Autocomplete
@@ -93,6 +92,15 @@ function grep($Regex, $Path) {
 		return
 	}
 	$Input | Select-String $Regex
+}
+
+function activate {
+    $VenvPath = ".\.venv\Scripts\Activate.ps1"
+    if(Test-Path -Path $VenvPath) {
+        $VenvPath
+    } else {
+        Write-Host "pwsh: python environment not found!" -ForegroundColor "Red"
+    }
 }
 
 function restartshell {

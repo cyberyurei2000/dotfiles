@@ -10,7 +10,7 @@ prompt_default_setup() {
     PS1="%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ "
     PS2="¥ "
 }
-prompt_server_setup(){
+prompt_server_setup() {
     PS1="%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ "
     PS2="¥ "
 }
@@ -67,9 +67,9 @@ alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 alias echo="echo -e"
 alias killuser="pkill -KILL -u $USER"
-alias vi=nvim
-alias vim=nvim
-alias svim=sudoedit
+alias vi="nvim"
+alias vim="nvim"
+alias svim="sudoedit"
 alias ping="ping -c 5"
 alias aria2="aria2c"
 alias sysinfo="fastfetch && echo"
@@ -82,7 +82,7 @@ fi
 
 # Custom commands
 function mkcd() {
-    if [[ -d $1 ]]; then
+    if [ -d $1 ]; then
         printf -P "zsh: \"$1\" already exists!"
         cd $1
     else
@@ -106,14 +106,22 @@ function restartshell() {
     fi
 }
 
-# Custom functions
+function activate() {
+    VENV_PATH="./.venv/bin/activate"
+    if [ -f $VENV_PATH ]; then
+        source $VENV_PATH
+    else
+        printf "zsh: python environment not found!"
+    fi
+}
+
 function clear-screen-scrollback() {
-    echoti civis >"$TTY"
-    printf "%b" "\e[H\e[2J" >"$TTY"
+    echoti civis > "$TTY"
+    printf "%b" "\e[H\e[2J" > "$TTY"
     zle .reset-prompt
     zle -R
-    printf "%b" "\e[3J" >"$TTY"
-    echoti cnorm >"$TTY"
+    printf "%b" "\e[3J" > "$TTY"
+    echoti cnorm > "$TTY"
 }
 zle -N clear-screen-scrollback
 bindkey "^L" clear-screen-scrollback
