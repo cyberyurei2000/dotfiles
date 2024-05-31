@@ -42,14 +42,14 @@ Remove-Item Alias:wget -ErrorAction SilentlyContinue
 Remove-Item Alias:mkdir -ErrorAction SilentlyContinue
 
 # Custom commands
-function ll($Path) {
+function ll([String]$Path) {
     if($Path -eq "") {
         $Path = "."
     }
     Get-ChildItem -Path $Path -Force | Format-Table -AutoSize
 }
 
-function mkdir($Path) {
+function mkdir([String]$Path) {
     $File = New-Item -Path $Path -ItemType "Directory"
     if(Test-Path -Path $Path) {
         if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
@@ -58,7 +58,7 @@ function mkdir($Path) {
     }
 }
 
-function mkcd($Path) {
+function mkcd([String]$Path) {
     if(Test-Path -Path $Path) {
         Write-Host "pwsh: \"$Path\" already exists!" -ForegroundColor "Yellow"
         Set-Location -Path $Path
@@ -73,7 +73,7 @@ function mkcd($Path) {
     }
 }
 
-function touch($Path) {
+function touch([String]$Path) {
     $File = New-Item -Path $Path -ItemType "File"
     if(Test-Path -Path $Path) {
         if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
@@ -86,7 +86,7 @@ function .. {
     Set-Location -Path ..
 }
 
-function grep($Regex, $Path) {
+function grep([String]$Regex, [String]$Path) {
 	if($Path) {
 		Get-ChildItem $Path | Select-String $Regex
 		return
@@ -103,6 +103,12 @@ function activate {
     }
 }
 
+function rcp([String]$Path, [String]$TargetPath) {
+    $ParentPath = Split-Path (Get-Item $Path) -Parent
+    $File = Split-Path (Get-Item $Path) -Leaf
+    Robocopy.exe $ParentPath $TargetPath $File //mt //z
+}
+
 function restartshell {
     Stop-Process -ProcessName explorer
 }
@@ -111,7 +117,7 @@ function df {
     Get-Volume
 }
 
-function pkill($Name) {
+function pkill([String]$Name) {
     Get-Process $Name -ErrorAction SilentlyContinue | Stop-Process
 }
 

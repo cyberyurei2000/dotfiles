@@ -9,27 +9,27 @@ $LocalAppData = [Environment]::GetFolderPath('LocalApplicationData')
 $Temp = $env:TEMP
 $IsDiskC = $Dir | Select-String -Pattern "C:"
 
-function Setup-Aria2 {
+function Set-Aria2 {
     $File = New-Item -Path "$HOME" -Name ".aria2" -ItemType "Directory" -Force
     $File.attributes = "Hidden"
     $File = New-Item -Path "$HOME" -Name ".cache" -ItemType "Directory" -Force
     $File.attributes = "Hidden"
     $Aria2ConfigPath = "$HOME\.aria2"
 
-    if($IsDiskC -ne $null) {
+    if($null -ne $IsDiskC) {
         New-Item -Path "$Aria2ConfigPath" -Name "aria2.conf" -ItemType "HardLink" -Target "$Dir\config\aria2\aria2.conf" -Force
     } else {
         Copy-Item -Path "$Dir\config\aria2\aria2.conf" -Destination "$Aria2ConfigPath\aria2.conf" -Force
     }
 }
 
-function Setup-Git {
+function Set-Git {
     $File = New-Item -Path "$HOME" -Name ".config" -ItemType "Directory" -Force
     $File.attributes = "Hidden"
     New-Item -Path "$HOME\.config" -Name "git" -ItemType "Directory" -Force
     $GitConfigPath = "$HOME\.config\git"
 
-    if($IsDiskC -ne $null) {
+    if($null -ne $IsDiskC) {
         New-Item -Path "$GitConfigPath" -Name "config" -ItemType "HardLink" -Target "$Dir\config\git\gitconfig" -Force
         New-Item -Path "$GitConfigPath" -Name "ignore" -ItemType "HardLink" -Target "$Dir\config\git\gitignore" -Force
     } else {
@@ -38,71 +38,69 @@ function Setup-Git {
     }
 }
 
-function Setup-Mpv {
+function Set-Mpv {
     New-Item -Path "$AppData" -Name "mpv" -ItemType "Directory" -Force
     $MpvConfigPath = "$AppData\mpv"
 
-    if($IsDiskC -ne $null) {
+    if($null -ne $IsDiskC) {
         New-Item -Path "$MpvConfigPath" -Name "mpv.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\mpv_windows.conf" -Force
     } else {
         Copy-Item -Path "$Dir\config\mpv\mpv_windows.conf" -Destination "$MpvConfigPath\mpv.conf" -Force
     }
 }
 
-function Setup-Nvim {
+function Set-Nvim {
     New-Item -Path "$LocalAppData" -Name "nvim" -ItemType "Directory" -Force
     $NvimConfigPath = "$LocalAppData\nvim"
 
-    if($IsDiskC -ne $null) {
+    if($null -ne $IsDiskC) {
         New-Item -Path "$NvimConfigPath" -Name "init.vim" -ItemType "HardLink" -Target "$Dir\config\nvim\init.vim" -Force
     } else {
         Copy-Item -Path "$Dir\config\nvim\init.vim" -Destination "$NvimConfigPath\init.vim" -Force
     }
 }
 
-function Setup-Pwsh {
+function Set-Pwsh {
     New-Item -Path "$HOME\Documents" -Name "PowerShell" -ItemType "Directory" -Force
     $PwshConfigPath = "$HOME\Documents\PowerShell"
 
-    if($IsDiskC -ne $null) {
+    if($null -ne $IsDiskC) {
         New-Item -Path "$PwshConfigPath" -Name "profile.ps1" -ItemType "HardLink" -Target "$Dir\config\pwsh\profile.ps1" -Force
     } else {
         Copy-Item -Path "$Dir\config\pwsh\profile.ps1" -Destination "$PwshConfigPath\profile.ps1" -Force
     }
 }
 
-function Setup-Fastfetch() {
+function Set-Fastfetch() {
     $File = New-Item -Path "$HOME" -Name ".config" -ItemType "Directory" -Force
     $File.attributes = "Hidden"
     New-Item -Path "$HOME\.config" -Name "fastfetch" -ItemType "Directory" -Force
     $FetchConfigPath = "$HOME\.config\fastfetch"
 
-    if($IsDiskC -ne $null) {
+    if($null -ne $IsDiskC) {
         New-Item -Path "$FetchConfigPath" -Name "config.jsonc" -ItemType "HardLink" -Target "$Dir\config\fastfetch\config.jsonc" -Force
     } else {
         Copy-Item -Path "$Dir\config\fastfetch\config.jsonc" -Destination "$FetchConfigPath\config.jsonc" -Force
     }
 }
 
-function Setup-Ssh {
+function Set-Ssh {
     $File = New-Item -Path "$HOME" -Name ".ssh" -ItemType "Directory" -Force
     $File.attributes = "Hidden"
     $SshConfigPath = "$HOME\.ssh"
 
     if(Test-Path -Path "$Dir\config\ssh\config_windows") {
-        if($IsDiskC -ne $null) {
+        if($null -ne $IsDiskC) {
             New-Item -Path "$SshConfigPath" -Name "config" -ItemType "HardLink" -Target "$Dir\config\ssh\config_windows" -Force
         } else {
             Copy-Item -Path "$Dir\config\ssh\config_windows" -Destination "$SshConfigPath\config" -Force
         }
     } else {
-        [Console]::ForegroundColor = "red"
-        [Console]::Error.WriteLine("ERROR: Failed to setup SSH! Configuration file not found.")
-        [Console]::ResetColor()
+        Write-Host "ERROR: Failed to setup SSH! Configuration file not found." -ForegroundColor "Red"
     }
 }
 
-function Setup-Mpv-Scripts {
+function Set-MpvScripts {
     $MpvConfigPath = "$AppData\mpv"
 
     New-Item -Path "$MpvConfigPath" -Name "scripts" -ItemType "Directory" -Force
@@ -116,11 +114,11 @@ function Setup-Mpv-Scripts {
     Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\"
 }
 
-Setup-Aria2
-Setup-Git
-Setup-Mpv
-Setup-Nvim
-Setup-Pwsh
-Setup-Fastfetch
-Setup-Ssh
-Setup-Mpv-Scripts
+Set-Aria2
+Set-Git
+Set-Mpv
+Set-Nvim
+Set-Pwsh
+Set-Fastfetch
+Set-Ssh
+Set-MpvScripts
