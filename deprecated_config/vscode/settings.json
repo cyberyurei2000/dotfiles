@@ -1,5 +1,4 @@
 {
-    // WORKBENCH
     "workbench.colorCustomizations": {
         "[One Dark Pro]": {
             "badge.background": "#ffffff10",
@@ -25,9 +24,14 @@
     "workbench.layoutControl.type": "toggles",
     "workbench.list.smoothScrolling": true,
     "workbench.settings.editor": "json",
+    "workbench.settings.enableNaturalLanguageSearch": false,
     "workbench.tips.enabled": false,
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
     "breadcrumbs.enabled": false,
-    // EDITOR
+    "debug.console.closeOnEnd": true,
+    "debug.showInStatusBar": "never",
     "editor.bracketPairColorization.enabled": false,
     "editor.codeLens": false,
     "editor.cursorBlinking": "phase",
@@ -47,23 +51,11 @@
     "editor.stickyScroll.enabled": false,
     "editor.stickyTabStops": true,
     "editor.suggestSelection": "first",
-    // DEBUGGER
-    "debug.console.closeOnEnd": true,
-    "debug.showInStatusBar": "never",
-    "debug.toolBarLocation": "commandCenter",
-    "launch": {
-        "configurations": [
-            {
-                "name": "Python",
-                "type": "debugpy",
-                "request": "launch",
-                "program": "${file}",
-                "console": "integratedTerminal"
-            },
-        ]
-    },
-    // FILE EXPLORER
     "explorer.compactFolders": false,
+    "debug.toolBarLocation": "commandCenter",
+    "files.associations": {
+        "iostream": "cpp"
+    },
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -77,14 +69,55 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    // TERMINAL
-    "accessibility.signals.terminalBell": {
-        "sound": "on"
+    "launch": {
+        "configurations": [
+            {
+                "name": "Web",
+                "type": "chrome",
+                "request": "launch",
+                "webRoot": "${workspaceFolder}",
+                "file": "${workspaceFolder}/${fileBasenameNoExtension}.html"
+            },
+            {
+                "name": "Python",
+                "type": "debugpy",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Java",
+                "type": "java",
+                "request": "launch",
+                "mainClass": "${file}"
+            },
+            {
+                "name": "C/C++ (Windows)",
+                "type": "gdb",
+                "request": "launch",
+                "target": "./build/${fileBasenameNoExtension}.exe",
+                "cwd": "${workspaceRoot}",
+                "valuesFormatting": "parseText",
+            },
+            {
+                "name": "C/C++ (Linux)",
+                "type": "gdb",
+                "request": "launch",
+                "target": "./build/${fileBasenameNoExtension}.elf",
+                "cwd": "${workspaceRoot}",
+                "valuesFormatting": "parseText",
+            }
+        ]
     },
+    "scm.alwaysShowRepositories": true,
+    "security.workspace.trust.enabled": false,
+    "settingsSync.ignoredExtensions": [
+        "ms-vscode-remote.remote-wsl"
+    ],
     "terminal.integrated.confirmOnExit": "always",
     "terminal.integrated.enableVisualBell": true,
-    "terminal.integrated.fontFamily": "Cascadia Mono, Consolas, monospace",
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontFamily": "Noto Sans Mono, Cascadia Mono, Consolas, monospace",
+    "terminal.integrated.fontSize": 13,
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
             "source": "PowerShell",
@@ -96,26 +129,24 @@
     },
     "terminal.integrated.shellIntegration.decorationsEnabled": "never",
     "terminal.integrated.smoothScrolling": true,
-    // WINDOW
+    "update.showReleaseNotes": false,
     "window.commandCenter": true,
-    "window.dialogStyle": "custom",
     "window.menuBarVisibility": "compact",
+    "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
-    // ANNOYANCES
     "extensions.autoUpdate": false,
     "extensions.ignoreRecommendations": true,
-    "security.workspace.trust.enabled": false,
-    "telemetry.telemetryLevel": "off",
-    "update.showReleaseNotes": false,
-    "workbench.settings.enableNaturalLanguageSearch": false,
-    // PROGRAMMING LANGUAGES CONFIG
     "html.format.indentInnerHtml": true,
     "javascript.suggest.completeFunctionCalls": true,
     "javascript.suggest.paths": false,
     "javascript.validate.enable": false,
     "typescript.suggest.paths": false,
+    "[java]": {
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+    },
     "[javascript]": {
-        "editor.semanticHighlighting.enabled": false,
+        "editor.maxTokenizationLineLength": 2500,
+        "editor.semanticHighlighting.enabled": false
     },
     "[markdown]": {
         "editor.wordWrap": "on",
@@ -139,6 +170,9 @@
         "editor.formatOnType": true,
         "editor.defaultFormatter": "eeyore.yapf"
     },
+    "[ruby]": {
+        "editor.tabSize": 2
+    },
     "[shellscript]": {
         "editor.quickSuggestions": {
             "other": true,
@@ -146,7 +180,7 @@
             "strings": false
         }
     },
-    // EXTENSIONS CONFIG
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "material-icon-theme.activeIconPack": "none",
     "material-icon-theme.folders.theme": "classic",
     "path-autocomplete.disableUpOneFolder": false,
@@ -159,4 +193,12 @@
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "basic",
+    "python.createEnvironment.contentButton": "show",
+    "java.debug.settings.enableRunDebugCodeLens": false,
+    "java.debug.settings.stepping.skipClasses": [
+        "$JDK",
+        "$Libraries"
+    ],
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "cmake.configureOnOpen": true
 }
