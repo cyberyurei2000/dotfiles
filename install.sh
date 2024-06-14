@@ -38,9 +38,12 @@ setup_git() {
 
 setup_mpv() {
     mkdir -p "$XDG_CONFIG_HOME/mpv"
+    mkdir -p "$XDG_CONFIG_HOME/mpv/script-opts"
     MPV_CONFIG_PATH="$XDG_CONFIG_HOME/mpv"
+    MPV_OPTS_PATH="$MPV_CONFIG_PATH/script-opts"
 
     ln -sf "$DIR/config/mpv/mpv_linux.conf" "$MPV_CONFIG_PATH/mpv.conf"
+    ln -sf "$DIR/config/mpv/script-opts/modernx.conf" "$MPV_OPTS_PATH/modernx.conf"
 }
 
 setup_nvim() {
@@ -93,9 +96,10 @@ setup_mpv_scripts() {
     mkdir -p "$MPV_CONFIG_PATH/scripts"
     mkdir -p "$MPV_CONFIG_PATH/fonts"
 
-    git clone "https://github.com/cyl0/ModernX.git" "/tmp/ModernX"
+    git clone "https://github.com/zydezu/ModernX.git" "/tmp/ModernX"
     mv "/tmp/ModernX/modernx.lua" "$MPV_CONFIG_PATH/scripts/"
     mv "/tmp/ModernX/Material-Design-Iconic-Font.ttf" "$MPV_CONFIG_PATH/fonts/"
+    mv "/tmp/ModernX/Material-Design-Iconic-Round.ttf" "$MPV_CONFIG_PATH/fonts/"
 
     git clone "https://github.com/po5/thumbfast.git" "/tmp/thumbfast"
     mv "/tmp/thumbfast/thumbfast.lua" "$MPV_CONFIG_PATH/scripts/"

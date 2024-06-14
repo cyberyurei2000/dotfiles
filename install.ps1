@@ -40,12 +40,16 @@ function Set-Git {
 
 function Set-Mpv {
     New-Item -Path "$AppData" -Name "mpv" -ItemType "Directory" -Force
+    New-Item -Path "$AppData\mpv" -Name "script-opts" -ItemType "Directory" -Force
     $MpvConfigPath = "$AppData\mpv"
+    $MpvOptsPath = "$MpvConfigPath\script-opts"
 
     if($null -ne $IsDiskC) {
         New-Item -Path "$MpvConfigPath" -Name "mpv.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\mpv_windows.conf" -Force
+        New-Item -Path "$MpvOptsPath" -Name "modernx.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\script-opts\modernx.conf" -Force
     } else {
         Copy-Item -Path "$Dir\config\mpv\mpv_windows.conf" -Destination "$MpvConfigPath\mpv.conf" -Force
+        Copy-Item -Path "$Dir\config\mpv\script-opts\modernx.conf" -Destination "$MpvOptsPath\modernx.conf" -Force
     }
 }
 
@@ -106,9 +110,10 @@ function Set-MpvScripts {
     New-Item -Path "$MpvConfigPath" -Name "scripts" -ItemType "Directory" -Force
     New-Item -Path "$MpvConfigPath" -Name "fonts" -ItemType "Directory" -Force
 
-    git clone "https://github.com/cyl0/ModernX.git" "$Temp\ModernX"
+    git clone "https://github.com/zydezu/ModernX.git" "$Temp\ModernX"
     Move-Item -Path "$Temp\ModernX\modernx.lua" -Destination "$MpvConfigPath\scripts\"
     Move-Item -Path "$Temp\ModernX\Material-Design-Iconic-Font.ttf" -Destination "$MpvConfigPath\fonts\"
+    Move-Item -Path "$Temp\ModernX\Material-Design-Iconic-Round.ttf" -Destination "$MpvConfigPath\fonts\"
 
     git clone "https://github.com/po5/thumbfast.git" "$Temp\thumbfast"
     Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\"
