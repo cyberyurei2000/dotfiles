@@ -5,6 +5,8 @@ $IsAdmin = $Principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administ
 
 # PROMPT
 function Prompt {
+    #$Domain = $([System.Security.Principal.WindowsIdentity]::GetCurrent().Name)
+    $Domain = $([Environment]::UserName + "@" + [Environment]::UserDomainName)
     $Path = $(Get-Location)
     $Path_arr = $Path.path.Split("\")
     if($Path_arr.count -gt 4) {
@@ -12,9 +14,14 @@ function Prompt {
     }
 
     if($IsAdmin) {
-        "PS " + $Path + " #> "
+        Write-Host $("[ADMIN]") -NoNewline
+        Write-Host $($Domain + " ") -ForegroundColor "DarkCyan" -NoNewline
+        Write-Host $($Path) -ForegroundColor "Red" -NoNewline
+        return " #> "
     } else {
-        "PS " + $Path + " ¥> "
+        Write-Host $($Domain + " ") -ForegroundColor "DarkCyan" -NoNewline
+        Write-Host $($Path) -ForegroundColor "Red" -NoNewline
+        return " ¥> "
     }
 }
 
@@ -134,5 +141,6 @@ function sha256sum {
 }
 
 function sysinfo {
+    Write-Host ""
     fastfetch && Write-Host ""
 }

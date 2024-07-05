@@ -115,7 +115,9 @@ setup_nvim_theme() {
     cp -r "/tmp/tokyonight/colors" "$NVIM_CONFIG_PATH/"
 
     mkdir -p "$NVIM_CONFIG_PATH/lua/tokyonight"
-    cp /tmp/tokyonight/lua/tokyonight/* "$NVIM_CONFIG_PATH/lua/tokyonight/"
+    cp "/tmp/tokyonight/lua/tokyonight/*.lua" "$NVIM_CONFIG_PATH/lua/tokyonight/"
+    cp -r "/tmp/tokyonight/lua/tokyonight/colors" "$NVIM_CONFIG_PATH/lua/tokyonight/"
+    cp -r "/tmp/tokyonight/lua/tokyonight/groups" "$NVIM_CONFIG_PATH/lua/tokyonight/"
 }
 
 setup_aria2
