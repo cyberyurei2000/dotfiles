@@ -111,16 +111,16 @@ function Set-MpvScripts {
     New-Item -Path "$MpvConfigPath" -Name "fonts" -ItemType "Directory" -Force
 
     git clone "https://github.com/zydezu/ModernX.git" "$Temp\ModernX"
-    Move-Item -Path "$Temp\ModernX\modernx.lua" -Destination "$MpvConfigPath\scripts\"
-    Move-Item -Path "$Temp\ModernX\Material-Design-Iconic-Font.ttf" -Destination "$MpvConfigPath\fonts\"
-    Move-Item -Path "$Temp\ModernX\Material-Design-Iconic-Round.ttf" -Destination "$MpvConfigPath\fonts\"
+    Move-Item -Path "$Temp\ModernX\modernx.lua" -Destination "$MpvConfigPath\scripts\" -Force
+    Move-Item -Path "$Temp\ModernX\Material-Design-Iconic-Font.ttf" -Destination "$MpvConfigPath\fonts\" -Force
+    Move-Item -Path "$Temp\ModernX\Material-Design-Iconic-Round.ttf" -Destination "$MpvConfigPath\fonts\" -Force
 
     git clone "https://github.com/po5/thumbfast.git" "$Temp\thumbfast"
-    Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\"
+    Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\" -Force
 
     git clone "https://github.com/cyberyurei2000/mpv-osc-clock" "$Temp\mpv-osc-clock"
-    Move-Item -Path "$Temp\mpv-osc-clokc\scripts\osc-clock.lua" -Destination "$MpvConfigPath\scripts\"
-    Move-Item -Path "$Temp\mpv-osc-clock\fonts\FO-ANN-GMorning2020.otf" -Destination "$MpvConfigPath\fonts\"
+    Move-Item -Path "$Temp\mpv-osc-clock\scripts\osc-clock.lua" -Destination "$MpvConfigPath\scripts\" -Force
+    Move-Item -Path "$Temp\mpv-osc-clock\fonts\FO-ANN-GMorning2020.otf" -Destination "$MpvConfigPath\fonts\" -Force
 }
 
 Set-Aria2
