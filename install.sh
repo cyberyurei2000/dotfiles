@@ -103,6 +103,10 @@ setup_mpv_scripts() {
 
     git clone "https://github.com/po5/thumbfast.git" "/tmp/thumbfast"
     mv "/tmp/thumbfast/thumbfast.lua" "$MPV_CONFIG_PATH/scripts/"
+
+    git clone "https://github.com/cyberyurei2000/mpv-osc-clock" "/tmp/mpv-osc-clock"
+    mv "/tmp/mpv-osc-clock/scripts/osc-clock.lua" "$MPV_CONFIG_PATH/scripts/"
+    mv "/tmp/mpv-osc-clock/fonts/FO-ANN-GMorning2020.otf" "$MPV_CONFIG_PATH/fonts/"
 }
 
 setup_nvim_theme() {

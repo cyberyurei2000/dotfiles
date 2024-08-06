@@ -117,6 +117,10 @@ function Set-MpvScripts {
 
     git clone "https://github.com/po5/thumbfast.git" "$Temp\thumbfast"
     Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\"
+
+    git clone "https://github.com/cyberyurei2000/mpv-osc-clock" "$Temp\mpv-osc-clock"
+    Move-Item -Path "$Temp\mpv-osc-clokc\scripts\osc-clock.lua" -Destination "$MpvConfigPath\scripts\"
+    Move-Item -Path "$Temp\mpv-osc-clock\fonts\FO-ANN-GMorning2020.otf" -Destination "$MpvConfigPath\fonts\"
 }
 
 Set-Aria2
