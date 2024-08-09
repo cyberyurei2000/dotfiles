@@ -15,7 +15,8 @@ export XMODIFIERS=@im=fcitx5
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
-# Nvidia
+# Intel/Nvidia
+ANV_VIDEO_DECODE=1
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 # GTK 2.0
