@@ -43,7 +43,7 @@ setup_mpv() {
     MPV_OPTS_PATH="$MPV_CONFIG_PATH/script-opts"
 
     ln -sf "$DIR/config/mpv/mpv_linux.conf" "$MPV_CONFIG_PATH/mpv.conf"
-    ln -sf "$DIR/config/mpv/script-opts/modernx.conf" "$MPV_OPTS_PATH/modernx.conf"
+    ln -sf "$DIR/config/mpv/script-opts/modernx_linux.conf" "$MPV_OPTS_PATH/modernx.conf"
 }
 
 setup_nvim() {

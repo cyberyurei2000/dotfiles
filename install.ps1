@@ -46,10 +46,10 @@ function Set-Mpv {
 
     if($null -ne $IsDiskC) {
         New-Item -Path "$MpvConfigPath" -Name "mpv.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\mpv_windows.conf" -Force
-        New-Item -Path "$MpvOptsPath" -Name "modernx.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\script-opts\modernx.conf" -Force
+        New-Item -Path "$MpvOptsPath" -Name "modernx.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\script-opts\modernx_windows.conf" -Force
     } else {
         Copy-Item -Path "$Dir\config\mpv\mpv_windows.conf" -Destination "$MpvConfigPath\mpv.conf" -Force
-        Copy-Item -Path "$Dir\config\mpv\script-opts\modernx.conf" -Destination "$MpvOptsPath\modernx.conf" -Force
+        Copy-Item -Path "$Dir\config\mpv\script-opts\modernx_windows.conf" -Destination "$MpvOptsPath\modernx.conf" -Force
     }
 }
 
