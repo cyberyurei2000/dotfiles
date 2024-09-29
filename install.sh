@@ -50,7 +50,7 @@ setup_nvim() {
     mkdir -p "$XDG_CONFIG_HOME/nvim"
     NVIM_CONFIG_PATH="$XDG_CONFIG_HOME/nvim"
 
-    ln -sf "$DIR/config/nvim/init.vim" "$NVIM_CONFIG_PATH/init.vim"
+    ln -sf "$DIR/config/nvim/init.lua" "$NVIM_CONFIG_PATH/init.lua"
 }
 
 setup_zsh() {

@@ -58,9 +58,9 @@ function Set-Nvim {
     $NvimConfigPath = "$LocalAppData\nvim"
 
     if($null -ne $IsDiskC) {
-        New-Item -Path "$NvimConfigPath" -Name "init.vim" -ItemType "HardLink" -Target "$Dir\config\nvim\init.vim" -Force
+        New-Item -Path "$NvimConfigPath" -Name "init.lua" -ItemType "HardLink" -Target "$Dir\config\nvim\init.lua" -Force
     } else {
-        Copy-Item -Path "$Dir\config\nvim\init.vim" -Destination "$NvimConfigPath\init.vim" -Force
+        Copy-Item -Path "$Dir\config\nvim\init.lua" -Destination "$NvimConfigPath\init.lua" -Force
     }
 }
 

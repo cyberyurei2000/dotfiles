@@ -28,17 +28,15 @@ set mousemodel=extend
 set visualbell t_vb=
 
 " Statusline
+hi Status1 guifg=#222432 guibg=#2AC3DE
 set laststatus=2
 set statusline=
-set statusline+=\ 
-set statusline+=%{StatuslineMode()}
-set statusline+=\ 
+set statusline+=%#Status1#\ %{StatuslineMode()}\ %*
 set statusline+=|
-set statusline+=\ 
-set statusline+=%f
-set statusline+=%=
+set statusline+=\ %f\ 
+set statusline+=%= 
 set statusline+=%l:%c\[%P\]\ \ 
-set statusline+=%{strlen(&fenc)?&fenc:'none'}\ \ 
+set statusline+=%{&fileencoding?&fileencoding:&encoding}\ \ 
 set statusline+=%{&ff}\ \ 
 set statusline+=%y
 set noshowmode
@@ -78,20 +76,29 @@ autocmd BufRead,BufEnter *.ps1 set ff=dos
 function! StatuslineMode()
     let l:mode=mode()
     if l:mode==#"n"
+        hi Status1 guifg=#222432 guibg=#2AC3DE
         return "NORMAL"
     elseif l:mode==?"v"
+        hi Status1 guifg=#222432 guibg=#BB9AF7
         return "VISUAL"
     elseif l:mode==#"i"
+        hi Status1 guifg=#222432 guibg=#9ECE6A
         return "INSERT"
     elseif l:mode==#"R"
+        hi Status1 guifg=#222432 guibg=#FF9E64
         return "REPLACE"
     elseif l:mode==?"s"
+        hi Status1 guifg=#222432 guibg=#CFC9C2
         return "SELECT"
     elseif l:mode==#"t"
+        hi Status1 guifg=#222432 guibg=#F7768E
         return "TERMINAL"
     elseif l:mode==#"c"
+        hi Status1 guifg=#222432 guibg=#F7768E
         return "COMMAND"
     elseif l:mode==#"!"
+        hi Status1 guifg=#222432 guibg=#F7768E
         return "SHELL"
     endif
 endfunction
+
