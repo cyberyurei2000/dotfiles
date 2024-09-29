@@ -62,8 +62,8 @@ noremap <C-Z> u
 
 " Theme
 set termguicolors
-silent! colorscheme tokyonight-moon
-silent! if g:colors_name=="tokyonight"
+silent! colorscheme tokyonight-storm
+silent! if g:colors_name=="tokyonight-storm"
     silent! highlight TabLineSel guibg=#f7768e
 endif
 
@@ -72,10 +72,6 @@ autocmd BufRead,BufEnter *.txt set wrap
 autocmd BufRead,BufEnter *.txt set linebreak
 autocmd BufRead,BufEnter *.txt set noautoindent
 autocmd BufRead,BufEnter *.txt set nocindent
-autocmd BufRead,BufEnter * if &filetype == "" | set wrap | endif
-autocmd BufRead,BufEnter * if &filetype == "" | set linebreak | endif
-autocmd BufRead,BufEnter * if &filetype == "" | set noautoindent | endif
-autocmd BufRead,BufEnter * if &filetype == "" | set nocindent | endif
 autocmd BufRead,BufEnter *.ps1 set ff=dos
 
 " Mode
