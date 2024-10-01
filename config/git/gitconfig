@@ -12,3 +12,6 @@
 	branch = auto
 	interactive = auto
 	ui = true
+[safe]
+	directory = D:\\*
+	directory = /mnt/DATA/*
