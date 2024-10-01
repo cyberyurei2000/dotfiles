@@ -133,6 +133,28 @@ local function mode_colors()
     return color
 end
 
+local function filetype()
+    if vim.bo.filetype == "ps1" then
+        return "PowerShell"
+    elseif vim.bo.filetype == "sh" then
+        return "Shell"
+    else
+        return string.format("%s", vim.bo.filetype):gsub("^%l", string.upper)
+    end
+end
+
+local function fileformat()
+    if vim.bo.fileformat == "unix" then
+        return "Unix(LF)"
+    elseif vim.bo.fileformat == "dos" then
+        return "DOS(CRLF)"
+    elseif vim.bo.fileformat == "mac" then
+        return "Mac(CR)"
+    else
+        return string.format("%s", vim.bo.fileformat):gsub("^%l", string.upper)
+    end
+end
+
 local function clock()
     if vim.env.DISPLAY == nil and vim.fn.has("linux") then
         return " %{strftime(\"%H:%M\")} "
@@ -145,17 +167,17 @@ end
 vim.opt.showmode = false
 vim.opt.laststatus = 2
 function StatusLine()
-    local fileencoding = string.format(" %s ", vim.opt.fileencoding:get()):upper()
-    local filetype = string.format("%s", vim.bo.filetype):gsub("^%l", string.upper)
+    local fileencoding = string.format("  %s  ", vim.opt.fileencoding:get()):upper()
     return table.concat({
         mode_colors(),
         vi_mode(),
         "%*",
         " %.40F ",
         "%=",
-        "%P %l:%c ",
+        filetype(),
         fileencoding,
-        string.format(" %s ", filetype),
+        fileformat(),
+        " %l:%c %P ",
         "%#StatusLineClock#",
         clock()
     })

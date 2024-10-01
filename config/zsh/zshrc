@@ -2,16 +2,22 @@
 autoload -Uz promptinit
 promptinit
 
+if [ -z $DISPLAY ]; then
+    CLOCK="[%*%f] "
+else
+    CLOCK=""
+fi
+
 prompt_debian_setup() {
-    PS1="%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b%# "
+    PS1="$CLOCK%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b%# "
     PS2="%# "
 }
 prompt_default_setup() {
-    PS1="%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ "
+    PS1="$CLOCK%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ "
     PS2="¥ "
 }
 prompt_server_setup() {
-    PS1="%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ "
+    PS1="$CLOCK%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ "
     PS2="¥ "
 }
 prompt_themes+=( debian default server )
