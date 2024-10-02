@@ -33,12 +33,12 @@ vim.opt.mouse = "a"
 vim.opt.mousemodel = "extend"
 
 -- KEYBINDS & AUTOCOMPLETE
-map({"i", "c"}, "<C-v>", "<C-R>+") -- Paste from clipboard (Ctrl + V)
-map({"n", "v"}, "<C-v>", '"+gP') -- Paste from the clipboard (Ctrl + V)
-map({"n", "v"}, "<C-c>", '"+y') -- Copy to the clipboard (Ctrl + C)
-map({"v"}, "<C-x>", '"+x') -- Cut to the clipboard (Ctrl + X)
-map("x", "p", [["_dP]]) -- Fix overriden text being copied to clipboard
-map({"n", "v"}, "<leader>d", [["_d]]) -- Fix deleted text being copied to clipboard
+map({"i", "c"}, "<C-v>", "<C-R>+")     -- Paste from clipboard (Ctrl + V)
+map({"n", "v"}, "<C-v>", '"+gP')       -- Paste from the clipboard (Ctrl + V)
+map({"n", "v"}, "<C-c>", '"+y')        -- Copy to the clipboard (Ctrl + C)
+map({"v"}, "<C-x>", '"+x')             -- Cut to the clipboard (Ctrl + X)
+map("x", "p", [["_dP]])                -- Fix overriden text being copied to clipboard
+map({"n", "v"}, "<leader>d", [["_d]])  -- Fix deleted text being copied to clipboard
 
 map("i", "'", "''<left>")
 map("i", '"', '""<left>')
@@ -72,6 +72,14 @@ autocmd({"BufRead", "BufEnter"}, {
     callback = function()
         vim.opt.fileformats = "dos"
     end
+})
+
+-- FILETYPES
+vim.filetype.add({
+    pattern = {
+        [".*/.ps1"] = "PowerShell",
+        [".*/.sh"] = "Shell"
+    },
 })
 
 -- HIGHLIGHTS
@@ -133,16 +141,6 @@ local function mode_colors()
     return color
 end
 
-local function filetype()
-    if vim.bo.filetype == "ps1" then
-        return "PowerShell"
-    elseif vim.bo.filetype == "sh" then
-        return "Shell"
-    else
-        return string.format("%s", vim.bo.filetype):gsub("^%l", string.upper)
-    end
-end
-
 local function fileformat()
     if vim.bo.fileformat == "unix" then
         return "Unix(LF)"
@@ -167,6 +165,7 @@ end
 vim.opt.showmode = false
 vim.opt.laststatus = 2
 function StatusLine()
+    local filetype = string.format("%s", vim.bo.filetype):gsub("^%l", string.upper)
     local fileencoding = string.format("  %s  ", vim.opt.fileencoding:get()):upper()
     return table.concat({
         mode_colors(),
@@ -174,7 +173,7 @@ function StatusLine()
         "%*",
         " %.40F ",
         "%=",
-        filetype(),
+        filetype,
         fileencoding,
         fileformat(),
         " %l:%c %P ",

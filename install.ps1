@@ -1,3 +1,5 @@
+#Requires -Version 7.0
+
 # Copyright (c) cyberyurei2000 2023-2024
 # Released under the 0BSD License
 # https://opensource.org/license/0bsd

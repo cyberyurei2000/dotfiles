@@ -100,6 +100,7 @@
     "window.commandCenter": true,
     "window.dialogStyle": "custom",
     "window.menuBarVisibility": "compact",
+    "window.experimentalControlOverlay": false,
     "window.titleBarStyle": "custom",
     // ANNOYANCES
     "extensions.autoUpdate": false,
@@ -135,6 +136,9 @@
         "editor.wordWrap": "bounded",
         "files.trimTrailingWhitespace": false
     },
+    "[powershell]": {
+        "files.eol": "\r\n"
+    },
     "[python]": {
         "editor.formatOnType": true,
         "editor.defaultFormatter": "eeyore.yapf"
@@ -158,5 +162,5 @@
     },
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
-    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.typeCheckingMode": "basic"
 }
