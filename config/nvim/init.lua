@@ -47,7 +47,7 @@ map("i", "[", "[]<left>")
 map("i", "{", "{}<left>")
 
 -- THEME
-if vim.env.DISPLAY == nil and vim.fn.has("linux") then
+if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
     vim.cmd [[silent! colorscheme industry]]
 else
     vim.opt.termguicolors = true
@@ -156,7 +156,7 @@ local function fileformat()
 end
 
 local function clock()
-    if vim.env.DISPLAY == nil and vim.fn.has("linux") then
+    if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
         return " %{strftime(\"%H:%M\")} "
     else
         return ""
