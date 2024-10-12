@@ -122,7 +122,7 @@ function Set-MpvScripts {
 
     git clone "https://github.com/cyberyurei2000/mpv-osc-clock" "$Temp\mpv-osc-clock"
     Move-Item -Path "$Temp\mpv-osc-clock\scripts\osc-clock.lua" -Destination "$MpvConfigPath\scripts\" -Force
-    Move-Item -Path "$Temp\mpv-osc-clock\fonts\FO-ANN-GMorning2020.otf" -Destination "$MpvConfigPath\fonts\" -Force
+    Move-Item -Path "$Temp\mpv-osc-clock\fonts\FO-TVASAHI-GMorning.otf" -Destination "$MpvConfigPath\fonts\" -Force
 }
 
 Set-Aria2

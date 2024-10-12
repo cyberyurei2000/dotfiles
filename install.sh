@@ -106,7 +106,7 @@ setup_mpv_scripts() {
 
     git clone "https://github.com/cyberyurei2000/mpv-osc-clock" "/tmp/mpv-osc-clock"
     mv "/tmp/mpv-osc-clock/scripts/osc-clock.lua" "$MPV_CONFIG_PATH/scripts/"
-    mv "/tmp/mpv-osc-clock/fonts/FO-ANN-GMorning2020.otf" "$MPV_CONFIG_PATH/fonts/"
+    mv "/tmp/mpv-osc-clock/fonts/FO-TVASAHI-GMorning.otf" "$MPV_CONFIG_PATH/fonts/"
 }
 
 setup_nvim_theme() {
