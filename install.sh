@@ -108,9 +108,6 @@ setup_mpv_scripts() {
     mv "/tmp/mpv-osc-clock/scripts/osc-clock.lua" "$MPV_CONFIG_PATH/scripts/"
     mv "/tmp/mpv-osc-clock/fonts/FO-TVASAHI-GMorning.otf" "$MPV_CONFIG_PATH/fonts/"
 
-    git clone "https://github.com/4e6/mpv-reload" "/tmp/mpv-reload"
-    mv "/tmp/mpv-reload/reload.lua" "$MPV_CONFIG_PATH/scripts/"
-
     git clone "https://github.com/occivink/mpv-gallery-view" "/tmp/mpv-gallery-view"
     mv /tmp/mpv-gallery-view/scripts/* "$MPV_CONFIG_PATH/scripts/"
     mv /tmp/mpv-gallery-view/script-modules "$MPV_CONFIG_PATH/"
