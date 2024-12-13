@@ -43,7 +43,8 @@ setup_mpv() {
     MPV_OPTS_PATH="$MPV_CONFIG_PATH/script-opts"
 
     ln -sf "$DIR/config/mpv/mpv_linux.conf" "$MPV_CONFIG_PATH/mpv.conf"
-    ln -sf "$DIR/config/mpv/script-opts/modernx_linux.conf" "$MPV_OPTS_PATH/modernx.conf"
+    ln -sf "$DIR/config/mpv/input.conf" "$MPV_CONFIG_PATH/input.conf"
+    ln -sf "$DIR/config/mpv/script-opts/modernz_linux.conf" "$MPV_OPTS_PATH/modernz.conf"
 }
 
 setup_nvim() {
@@ -96,10 +97,9 @@ setup_mpv_scripts() {
     mkdir -p "$MPV_CONFIG_PATH/scripts"
     mkdir -p "$MPV_CONFIG_PATH/fonts"
 
-    git clone "https://github.com/zydezu/ModernX.git" "/tmp/ModernX"
-    mv "/tmp/ModernX/modernx.lua" "$MPV_CONFIG_PATH/scripts/"
-    mv "/tmp/ModernX/Material-Design-Iconic-Font.ttf" "$MPV_CONFIG_PATH/fonts/"
-    mv "/tmp/ModernX/Material-Design-Iconic-Round.ttf" "$MPV_CONFIG_PATH/fonts/"
+    git clone "https://github.com/Samillion/ModernZ" "/tmp/ModernZ"
+    mv "/tmp/ModernZ/modernz.lua" "$MPV_CONFIG_PATH/scripts/"
+    mv "/tmp/ModernZ/fluent-system-icons.ttf" "$MPV_CONFIG_PATH/fonts/"
 
     git clone "https://github.com/po5/thumbfast.git" "/tmp/thumbfast"
     mv "/tmp/thumbfast/thumbfast.lua" "$MPV_CONFIG_PATH/scripts/"
