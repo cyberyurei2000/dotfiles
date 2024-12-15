@@ -32,6 +32,7 @@
     "editor.codeLens": false,
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
+    "editor.hover.enabled": false,
     "editor.fontFamily": "JetBrains Mono, Cascadia Code, Noto Sans Mono, monospace",
     "editor.fontLigatures": true,
     "editor.inlayHints.enabled": "off",
