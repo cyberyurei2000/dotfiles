@@ -110,6 +110,7 @@
     "telemetry.telemetryLevel": "off",
     "update.showReleaseNotes": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
+    "chat.commandCenter.enabled": false,
     // PROGRAMMING LANGUAGES CONFIG
     "html.format.indentInnerHtml": true,
     "javascript.suggest.completeFunctionCalls": true,
