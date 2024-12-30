@@ -127,7 +127,7 @@ function Set-MpvScripts {
 
     git clone "https://github.com/occivink/mpv-gallery-view" "$Temp\mpv-gallery-view"
     Move-Item -Path "$Temp\mpv-gallery-view\scripts\*" -Destination "$MpvConfigPath\scripts\" -Force
-    Move-item -Path "$Temp\mpv-gallery-view\script-modules" -Destination "$MpvConfigPath\" -Force
+    Copy-Item -Path "$Temp\mpv-gallery-view\script-modules" -Destination "$MpvConfigPath\" -Force
 }
 
 Set-Aria2
