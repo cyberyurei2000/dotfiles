@@ -110,7 +110,7 @@ setup_mpv_scripts() {
 
     git clone "https://github.com/occivink/mpv-gallery-view" "/tmp/mpv-gallery-view"
     mv /tmp/mpv-gallery-view/scripts/* "$MPV_CONFIG_PATH/scripts/"
-    mv /tmp/mpv-gallery-view/script-modules "$MPV_CONFIG_PATH/"
+    cp -r /tmp/mpv-gallery-view/script-modules "$MPV_CONFIG_PATH/"
 }
 
 setup_nvim_theme() {
