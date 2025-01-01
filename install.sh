@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) cyberyurei2000 2023-2024
+# Copyright (c) cyberyurei2000 2023-2025
 # Released under the 0BSD License
 # https://opensource.org/license/0bsd
 
