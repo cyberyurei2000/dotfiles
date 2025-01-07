@@ -97,18 +97,18 @@ setup_mpv_scripts() {
     mkdir -p "$MPV_CONFIG_PATH/scripts"
     mkdir -p "$MPV_CONFIG_PATH/fonts"
 
-    git clone "https://github.com/Samillion/ModernZ" "/tmp/ModernZ"
+    git clone "https://github.com/Samillion/ModernZ.git" "/tmp/ModernZ"
     mv "/tmp/ModernZ/modernz.lua" "$MPV_CONFIG_PATH/scripts/"
     mv "/tmp/ModernZ/fluent-system-icons.ttf" "$MPV_CONFIG_PATH/fonts/"
 
     git clone "https://github.com/po5/thumbfast.git" "/tmp/thumbfast"
     mv "/tmp/thumbfast/thumbfast.lua" "$MPV_CONFIG_PATH/scripts/"
 
-    git clone "https://github.com/cyberyurei2000/mpv-osc-clock" "/tmp/mpv-osc-clock"
+    git clone "https://github.com/cyberyurei2000/mpv-osc-clock.git" "/tmp/mpv-osc-clock"
     mv "/tmp/mpv-osc-clock/scripts/osc-clock.lua" "$MPV_CONFIG_PATH/scripts/"
     mv "/tmp/mpv-osc-clock/fonts/FO-TVASAHI-GMorning.otf" "$MPV_CONFIG_PATH/fonts/"
 
-    git clone "https://github.com/occivink/mpv-gallery-view" "/tmp/mpv-gallery-view"
+    git clone "https://github.com/occivink/mpv-gallery-view.git" "/tmp/mpv-gallery-view"
     mv /tmp/mpv-gallery-view/scripts/* "$MPV_CONFIG_PATH/scripts/"
     cp -r /tmp/mpv-gallery-view/script-modules "$MPV_CONFIG_PATH/"
 }

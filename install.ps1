@@ -114,18 +114,18 @@ function Set-MpvScripts {
     New-Item -Path "$MpvConfigPath" -Name "scripts" -ItemType "Directory" -Force
     New-Item -Path "$MpvConfigPath" -Name "fonts" -ItemType "Directory" -Force
 
-    git clone "https://github.com/Samillion/ModernZ" "$Temp\ModernZ"
+    git clone "https://github.com/Samillion/ModernZ.git" "$Temp\ModernZ"
     Move-Item -Path "$Temp\ModernZ\modernz.lua" -Destination "$MpvConfigPath\scripts\" -Force
     Move-Item -Path "$Temp\ModernZ\fluent-system-icons.ttf" -Destination "$MpvConfigPath\fonts\" -Force
 
     git clone "https://github.com/po5/thumbfast.git" "$Temp\thumbfast"
     Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\" -Force
 
-    git clone "https://github.com/cyberyurei2000/mpv-osc-clock" "$Temp\mpv-osc-clock"
+    git clone "https://github.com/cyberyurei2000/mpv-osc-clock.git" "$Temp\mpv-osc-clock"
     Move-Item -Path "$Temp\mpv-osc-clock\scripts\osc-clock.lua" -Destination "$MpvConfigPath\scripts\" -Force
     Move-Item -Path "$Temp\mpv-osc-clock\fonts\FO-TVASAHI-GMorning.otf" -Destination "$MpvConfigPath\fonts\" -Force
 
-    git clone "https://github.com/occivink/mpv-gallery-view" "$Temp\mpv-gallery-view"
+    git clone "https://github.com/occivink/mpv-gallery-view.git" "$Temp\mpv-gallery-view"
     Move-Item -Path "$Temp\mpv-gallery-view\scripts\*" -Destination "$MpvConfigPath\scripts\" -Force
     Copy-Item -Path "$Temp\mpv-gallery-view\script-modules" -Destination "$MpvConfigPath\" -Force
 }
