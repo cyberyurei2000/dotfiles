@@ -21,6 +21,10 @@
             "key": "Kernel  "
         },
         {
+            "type": "wm",
+            "key": "WM      "
+        },
+        {
             "type": "de",
             "key": "Desktop "
         },
@@ -54,7 +58,7 @@
         {
             "type": "colors",
             "paddingLeft": 2,
-            "symbol": "circle"
+            "symbol": "circle",
         }
     ]
 }
