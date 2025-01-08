@@ -8,18 +8,24 @@ $IsAdmin = $Principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administ
 # PROMPT
 function Prompt {
     #$Domain = $([System.Security.Principal.WindowsIdentity]::GetCurrent().Name)
-    #$Domain = $([Environment]::UserName + "@" + [Environment]::UserDomainName)
     $Path = $(Get-Location)
     $Path_arr = $Path.path.Split("\")
     if($Path_arr.count -gt 4) {
         $Path = @($Path_arr[0], "..." + $Path_arr[-3,-2,-1]) -join "\"
     }
+    $Explorer = $(Get-Process -Name explorer -ErrorAction SilentlyContinue)
 
     if($IsAdmin) {
+        if(!$Explorer) {
+            Write-Host $(Get-Date -Format "[HH:mm] ") -NoNewline
+        }
         #Write-Host $($Domain + " ") -ForegroundColor "DarkCyan" -NoNewline
         Write-Host $($Path) -NoNewline
         return " #> "
     } else {
+        if(!$Explorer) {
+            Write-Host $(Get-Date -Format "[HH:mm] ") -NoNewline
+        }
         #Write-Host $($Domain + " ") -ForegroundColor "DarkCyan" -NoNewline
         Write-Host $($Path) -NoNewline
         return " ¥> "
@@ -60,7 +66,7 @@ function ll([String]$Path) {
 function mkdir([String]$Path) {
     $File = New-Item -Path $Path -ItemType "Directory"
     if(Test-Path -Path $Path) {
-        if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
+        if($Path[0] -eq ".") {
             $File.attributes = "Hidden"
         }
     }
@@ -73,7 +79,7 @@ function mkcd([String]$Path) {
     } else {
         $File = New-Item -Path $Path -ItemType "Directory"
         if(Test-Path -Path $Path) {
-            if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
+            if($Path[0] -eq ".") {
                 $File.attributes = "Hidden"
             }
             Set-Location -Path $Path
@@ -84,7 +90,7 @@ function mkcd([String]$Path) {
 function touch([String]$Path) {
     $File = New-Item -Path $Path -ItemType "File"
     if(Test-Path -Path $Path) {
-        if($Path[0] -eq "." && ($Path[1] -ne "\" || $Path[1] -ne "/")) {
+        if($Path[0] -eq ".") {
             $File.attributes = "Hidden"
         }
     }
@@ -119,6 +125,10 @@ function rcp([String]$Path, [String]$TargetPath) {
 
 function restartshell {
     Stop-Process -ProcessName explorer
+}
+
+function killexplorer {
+    taskkill /F /IM explorer.exe
 }
 
 function df {
