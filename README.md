@@ -11,6 +11,7 @@ My configuration files and scripts for Windows and Linux.
 - mpv
 - nvim
 - pwsh (PowerShell 7+)
+- tmux
 - vscode (Visual Studio Code)
 - zsh
 

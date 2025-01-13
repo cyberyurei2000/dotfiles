@@ -67,6 +67,13 @@ setup_zsh() {
     ln -sf "$DIR/config/zsh/zshenv" "$HOME/.zshenv"
 }
 
+setup_tmux() {
+    mkdir -p "$XDG_CONFIG_HOME/tmux"
+    TMUX_CONFIG_PATH="$XDG_CONFIG_HOME/tmux"
+
+    ln -sf "$DIR/config/tmux/tmux.conf" "$TMUX_CONFIG_PATH/tmux.conf"
+}
+
 setup_fastfetch() {
     mkdir -p "$XDG_CONFIG_HOME/fastfetch"
     FETCH_CONFIG_PATH="$XDG_CONFIG_HOME/fastfetch"
@@ -134,6 +141,7 @@ setup_git
 setup_mpv
 setup_nvim
 setup_zsh
+setup_tmux
 setup_fastfetch
 setup_ssh
 setup_wineprefix
