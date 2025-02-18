@@ -33,6 +33,10 @@
             "key": "Shell   "
         },
         {
+            "type": "display",
+            "key": "Display "
+        },
+        {
             "type": "packages",
             "key": "Packages"
         },
@@ -58,7 +62,7 @@
         {
             "type": "colors",
             "paddingLeft": 2,
-            "symbol": "circle",
+            "symbol": "circle"
         }
     ]
 }
