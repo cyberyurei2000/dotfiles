@@ -81,6 +81,13 @@ setup_fastfetch() {
     ln -sf "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
 }
 
+setup_ghostty() {
+    mkdir -p "$XDG_CONFIG_HOME/ghostty"
+    GTTY_CONFIG_PATH="$XDG_CONFIG_HOME/ghostty"
+
+    ln -sf "$DIR/config/fastfetch/config" "$GTTY_CONFIG_PATH/config"
+}
+
 setup_ssh() {
     mkdir -p "$HOME/.ssh"
     SSH_CONFIG_PATH="$HOME/.ssh"
@@ -143,6 +150,7 @@ setup_nvim
 setup_zsh
 setup_tmux
 setup_fastfetch
+setup_ghostty
 setup_ssh
 setup_wineprefix
 setup_mpv_scripts

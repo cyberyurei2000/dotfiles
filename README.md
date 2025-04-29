@@ -8,6 +8,7 @@ My configuration files and scripts for Windows and Linux.
 - fastfetch
 - fontconfig
 - git
+- ghostty
 - mpv
 - nvim
 - pwsh (PowerShell 7+)
@@ -25,11 +26,11 @@ $ ./install.sh
 
 #### Windows
 
-This script only suports PowerShell version 7 or above.
-
 ```
 > ./install.ps1
 ```
+
+*This script only suports PowerShell version 7 or above.
 
 If you want to disable the configuration of a specific target, simply comment out the function call at the end of the install script.
 
