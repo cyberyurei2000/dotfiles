@@ -116,7 +116,7 @@ function Set-MpvScripts {
 
     git clone "https://github.com/Samillion/ModernZ.git" "$Temp\ModernZ"
     Move-Item -Path "$Temp\ModernZ\modernz.lua" -Destination "$MpvConfigPath\scripts\" -Force
-    Move-Item -Path "$Temp\ModernZ\fluent-system-icons.ttf" -Destination "$MpvConfigPath\fonts\" -Force
+    Move-Item -Path "$Temp\ModernZ\material-design-icons.ttf" -Destination "$MpvConfigPath\fonts\" -Force
 
     git clone "https://github.com/po5/thumbfast.git" "$Temp\thumbfast"
     Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\" -Force
