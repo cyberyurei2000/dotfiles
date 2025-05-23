@@ -113,6 +113,7 @@ function Set-MpvScripts {
 
     New-Item -Path "$MpvConfigPath" -Name "scripts" -ItemType "Directory" -Force
     New-Item -Path "$MpvConfigPath" -Name "fonts" -ItemType "Directory" -Force
+    New-Item -Path "$MpvConfigPath\scripts" -Name "mpv-gallery-view" -ItemType "Directory" -Force
 
     git clone "https://github.com/Samillion/ModernZ.git" "$Temp\ModernZ"
     Move-Item -Path "$Temp\ModernZ\modernz.lua" -Destination "$MpvConfigPath\scripts\" -Force
@@ -126,7 +127,7 @@ function Set-MpvScripts {
     Move-Item -Path "$Temp\mpv-osc-clock\fonts\FO-TVASAHI-GMorning.otf" -Destination "$MpvConfigPath\fonts\" -Force
 
     git clone "https://github.com/occivink/mpv-gallery-view.git" "$Temp\mpv-gallery-view"
-    Move-Item -Path "$Temp\mpv-gallery-view\scripts\*" -Destination "$MpvConfigPath\scripts\" -Force
+    Move-Item -Path "$Temp\mpv-gallery-view\scripts\*" -Destination "$MpvConfigPath\scripts\mpv-gallery-view\" -Force
     Copy-Item -Path "$Temp\mpv-gallery-view\script-modules\" -Destination "$MpvConfigPath\" -Recurse -Force
 }
 

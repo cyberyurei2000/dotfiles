@@ -85,7 +85,7 @@ setup_ghostty() {
     mkdir -p "$XDG_CONFIG_HOME/ghostty"
     GTTY_CONFIG_PATH="$XDG_CONFIG_HOME/ghostty"
 
-    ln -sf "$DIR/config/fastfetch/config" "$GTTY_CONFIG_PATH/config"
+    ln -sf "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
 }
 
 setup_ssh() {
@@ -110,6 +110,7 @@ setup_mpv_scripts() {
 
     mkdir -p "$MPV_CONFIG_PATH/scripts"
     mkdir -p "$MPV_CONFIG_PATH/fonts"
+    mkdir -p "$MPV_CONFIG_PATH/scripts/mpv-gallery-view"
 
     git clone "https://github.com/Samillion/ModernZ.git" "/tmp/ModernZ"
     mv "/tmp/ModernZ/modernz.lua" "$MPV_CONFIG_PATH/scripts/"
@@ -123,7 +124,7 @@ setup_mpv_scripts() {
     mv "/tmp/mpv-osc-clock/fonts/FO-TVASAHI-GMorning.otf" "$MPV_CONFIG_PATH/fonts/"
 
     git clone "https://github.com/occivink/mpv-gallery-view.git" "/tmp/mpv-gallery-view"
-    mv /tmp/mpv-gallery-view/scripts/* "$MPV_CONFIG_PATH/scripts/"
+    mv /tmp/mpv-gallery-view/scripts/* "$MPV_CONFIG_PATH/scripts/mpv-gallery-view"
     cp -r /tmp/mpv-gallery-view/script-modules "$MPV_CONFIG_PATH/"
 }
 
