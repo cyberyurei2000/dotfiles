@@ -32,7 +32,7 @@
     "editor.codeLens": false,
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.hover.enabled": false,
+    //"editor.hover.enabled": false,
     "editor.fontFamily": "JetBrains Mono, Cascadia Code, Noto Sans Mono, monospace",
     "editor.fontLigatures": true,
     "editor.inlayHints.enabled": "off",
@@ -101,16 +101,18 @@
     "window.commandCenter": true,
     "window.dialogStyle": "custom",
     "window.menuBarVisibility": "compact",
-    "window.experimentalControlOverlay": false,
     "window.titleBarStyle": "custom",
     // ANNOYANCES
+    "chat.agent.enabled": false,
+    "chat.commandCenter.enabled": false,
     "extensions.autoUpdate": false,
     "extensions.ignoreRecommendations": true,
+    "inlineChat.lineNaturalLanguageHint": false,
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
+    "terminal.integrated.initialHint": false,
     "update.showReleaseNotes": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
-    "chat.commandCenter.enabled": false,
     // PROGRAMMING LANGUAGES CONFIG
     "html.format.indentInnerHtml": true,
     "javascript.suggest.completeFunctionCalls": true,
@@ -164,5 +166,6 @@
     },
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "window.customTitleBarVisibility": "auto",
 }
