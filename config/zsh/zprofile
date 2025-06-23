@@ -8,7 +8,6 @@ fi
 # Nvidia/AMD
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export ANV_VIDEO_DECODE=1
-export POWERDEVIL_NO_DDCUTIL=1
 
 # Fcitx5
 export INPUT_METHOD=fcitx5

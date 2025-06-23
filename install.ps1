@@ -125,10 +125,6 @@ function Set-MpvScripts {
     git clone "https://github.com/cyberyurei2000/mpv-osc-clock.git" "$Temp\mpv-osc-clock"
     Move-Item -Path "$Temp\mpv-osc-clock\scripts\osc-clock.lua" -Destination "$MpvConfigPath\scripts\" -Force
     Move-Item -Path "$Temp\mpv-osc-clock\fonts\FO-TVASAHI-GMorning.otf" -Destination "$MpvConfigPath\fonts\" -Force
-
-    git clone "https://github.com/occivink/mpv-gallery-view.git" "$Temp\mpv-gallery-view"
-    Move-Item -Path "$Temp\mpv-gallery-view\scripts\*" -Destination "$MpvConfigPath\scripts\mpv-gallery-view\" -Force
-    Copy-Item -Path "$Temp\mpv-gallery-view\script-modules\" -Destination "$MpvConfigPath\" -Recurse -Force
 }
 
 Set-Aria2

@@ -77,7 +77,7 @@ alias svim="sudoedit"
 alias ping="ping -c 5"
 alias aria2="aria2c"
 alias sysinfo="fastfetch && echo"
-alias edit="ms-edit"
+alias edit="msedit"
 alias mdl="yt-dlp -f \"bestaudio\" --extract-audio --audio-format m4a"
 if command -v kioclient > /dev/null; then
     alias code="GTK_USE_PORTAL=1 ELECTRON_TRASH=kioclient code"
