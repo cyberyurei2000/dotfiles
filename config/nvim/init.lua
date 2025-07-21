@@ -26,7 +26,7 @@ vim.opt.tabstop = 4
 vim.opt.showtabline = 2
 
 vim.opt.list = true
-vim.opt.listchars = {tab = ">_", trail = "_"}
+vim.opt.listchars = {tab = ">_", trail = "_", eol = "↲"}
 vim.opt.shortmess:append({I = true})
 
 vim.opt.mouse = "a"
@@ -55,6 +55,10 @@ else
     if vim.g.colors_name == "tokyonight-storm" then
         vim.cmd [[silent! highlight TabLineSel guibg=#F7768E]]
     end
+    vim.api.nvim_set_hl(0, "CursorLine", {
+        underline = true,
+        sp = "#565f89"
+    })
 end
 
 -- LANGUAGE SPECIFIC
@@ -75,11 +79,17 @@ autocmd({"BufRead", "BufEnter"}, {
 })
 
 -- FILETYPES
-vim.filetype.add({
-    pattern = {
-        [".*/.ps1"] = "PowerShell",
-        [".*/.sh"] = "Shell"
-    },
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "ps1",
+    callback = function()
+        vim.bo.filetype = "PowerShell"
+    end
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "sh",
+    callback = function()
+        vim.bo.filetype = "ShellScript"
+    end
 })
 
 -- HIGHLIGHTS
