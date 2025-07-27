@@ -110,7 +110,6 @@ setup_mpv_scripts() {
 
     mkdir -p "$MPV_CONFIG_PATH/scripts"
     mkdir -p "$MPV_CONFIG_PATH/fonts"
-    mkdir -p "$MPV_CONFIG_PATH/scripts/mpv-gallery-view"
 
     git clone "https://github.com/Samillion/ModernZ.git" "/tmp/ModernZ"
     mv "/tmp/ModernZ/modernz.lua" "$MPV_CONFIG_PATH/scripts/"

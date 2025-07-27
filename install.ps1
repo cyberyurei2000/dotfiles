@@ -113,7 +113,6 @@ function Set-MpvScripts {
 
     New-Item -Path "$MpvConfigPath" -Name "scripts" -ItemType "Directory" -Force
     New-Item -Path "$MpvConfigPath" -Name "fonts" -ItemType "Directory" -Force
-    New-Item -Path "$MpvConfigPath\scripts" -Name "mpv-gallery-view" -ItemType "Directory" -Force
 
     git clone "https://github.com/Samillion/ModernZ.git" "$Temp\ModernZ"
     Move-Item -Path "$Temp\ModernZ\modernz.lua" -Destination "$MpvConfigPath\scripts\" -Force
