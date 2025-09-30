@@ -105,6 +105,7 @@
     // ANNOYANCES
     "chat.agent.enabled": false,
     "chat.commandCenter.enabled": false,
+    "chat.disableAIFeatures": true,
     "extensions.autoUpdate": false,
     "extensions.ignoreRecommendations": true,
     "inlineChat.lineNaturalLanguageHint": false,
@@ -123,7 +124,7 @@
         "editor.semanticHighlighting.enabled": false,
     },
     "[markdown]": {
-        "editor.wordWrap": "on",
+        "editor.wordWrap": "off",
         "editor.quickSuggestions": {
             "comments": "off",
             "strings": "off",
@@ -167,5 +168,4 @@
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "basic",
-    "window.customTitleBarVisibility": "auto",
 }
