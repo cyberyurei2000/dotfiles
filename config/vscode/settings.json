@@ -106,6 +106,7 @@
     "chat.agent.enabled": false,
     "chat.commandCenter.enabled": false,
     "chat.disableAIFeatures": true,
+    "chat.sendElementsToChat.enabled": false,
     "extensions.autoUpdate": false,
     "extensions.ignoreRecommendations": true,
     "inlineChat.lineNaturalLanguageHint": false,
@@ -167,5 +168,5 @@
     },
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
-    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.typeCheckingMode": "basic"
 }
