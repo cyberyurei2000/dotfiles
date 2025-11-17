@@ -70,7 +70,10 @@ alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 alias echo="echo -e"
 alias cls="clear"
-alias killuser="pkill -KILL -u $USER"
+if ! who | grep -q "sshd"; then
+    alias killuser="pkill -KILL -u $USER"
+fi
+
 alias vi="nvim"
 alias vim="nvim"
 alias svim="sudoedit"
@@ -78,7 +81,7 @@ alias ping="ping -c 5"
 alias aria2="aria2c"
 alias sysinfo="fastfetch && echo"
 alias edit="msedit"
-alias mdl="yt-dlp -f \"bestaudio\" --extract-audio --audio-format m4a"
+alias reload="exec zsh"
 if command -v kioclient > /dev/null; then
     alias code="GTK_USE_PORTAL=1 ELECTRON_TRASH=kioclient code"
 fi

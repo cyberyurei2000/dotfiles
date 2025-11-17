@@ -117,18 +117,12 @@ function activate {
     }
 }
 
-function rcp([String]$Path, [String]$TargetPath) {
-    $ParentPath = Split-Path (Get-Item $Path) -Parent
-    $File = Split-Path (Get-Item $Path) -Leaf
-    Robocopy.exe $ParentPath $TargetPath $File //mt //z
-}
-
 function restartshell {
     Stop-Process -ProcessName explorer
 }
 
 function killexplorer {
-    taskkill /F /IM explorer.exe
+    taskkill /F /IM explorer.exe > $null 2>&1
 }
 
 function df {
@@ -149,6 +143,22 @@ function sha1sum {
 
 function sha256sum {
     Get-FileHash -Algorithm SHA256 $Args
+}
+
+function disablevbs {
+    if($IsAdmin) {
+        bcdedit /set hypervisorlaunchtype off
+    } else {
+        Write-Host "pwsh: this command requires administrator rights to run!" -ForegroundColor "Red"
+    }
+}
+
+function enablevbs {
+    if($IsAdmin) {
+        bcdedit /set hypervisorlaunchtype on
+    } else {
+        Write-Host "pwsh: this command requires administrator rights to run!" -ForegroundColor "Red"
+    }
 }
 
 function sysinfo {
