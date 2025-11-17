@@ -33,6 +33,10 @@
             "key": "Shell   "
         },
         {
+            "type": "terminal",
+            "key": "Terminal"
+        },
+        {
             "type": "display",
             "key": "Display "
         },
