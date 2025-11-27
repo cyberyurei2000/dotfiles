@@ -1,0 +1,9 @@
+background-opacity = 0.8
+background-blur = true
+bell-features = "no-title"
+font-size = 10
+gtk-single-instance = true
+gtk-wide-tabs = false
+shell-integration-features = "no-cursor,no-sudo,title,ssh-env"
+window-height = 28
+window-width = 118
