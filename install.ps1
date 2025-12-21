@@ -79,6 +79,18 @@ function Set-Pwsh {
     }
 }
 
+function Set-Wt {
+    $WtConfigPath = "$LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
+
+    if(Test-Path -Path "$WtConfigPath") {
+        if($null -ne $IsDiskC) {
+            New-Item -Path "$WtConfigPath" -Name "settings.json" -ItemType "HardLink" -Target "$Dir\config\wt\settings.json" -Force
+        } else {
+            Copy-Item -Path "$Dir\config\wt\settings.json" -Destination "$WtConfigPath\settings.json" -Force
+        }
+    }
+}
+
 function Set-Fastfetch() {
     $File = New-Item -Path "$HOME" -Name ".config" -ItemType "Directory" -Force
     $File.attributes = "Hidden"
@@ -132,5 +144,6 @@ Set-Mpv
 Set-Nvim
 Set-Pwsh
 Set-Fastfetch
+Set-Wt
 Set-Ssh
 Set-MpvScripts

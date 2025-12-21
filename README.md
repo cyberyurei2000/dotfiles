@@ -15,6 +15,7 @@ My configuration files and scripts for Windows and Linux.
 - tmux
 - vscode (Visual Studio Code)
 - zsh
+- wt (Windows Terminal)
 
 ### Quick setup
 
