@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) cyberyurei2000 2023-2025
+# Copyright (c) cyberyurei2000 2023-2026
 # Released under the 0BSD License
 # https://opensource.org/license/0bsd
 
@@ -85,11 +85,7 @@ setup_ghostty() {
     mkdir -p "$XDG_CONFIG_HOME/ghostty"
     GTTY_CONFIG_PATH="$XDG_CONFIG_HOME/ghostty"
 
-    if [ -d /sys/class/power_supply/BAT* ]; then
-        ln -sf "$DIR/config/ghostty/config_lpt" "$GTTY_CONFIG_PATH/config"
-    else
-        ln -sf "$DIR/config/ghostty/config_pc" "$GTTY_CONFIG_PATH/config"
-    fi
+    ln -sf "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
 }
 
 setup_ssh() {

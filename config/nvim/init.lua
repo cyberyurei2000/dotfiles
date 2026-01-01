@@ -51,8 +51,8 @@ if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
     vim.cmd [[silent! colorscheme industry]]
 else
     vim.opt.termguicolors = true
-    vim.cmd [[silent! colorscheme tokyonight-storm]]
-    if vim.g.colors_name == "tokyonight-storm" then
+    vim.cmd [[silent! colorscheme tokyonight-night]]
+    if vim.g.colors_name == "tokyonight-night" then
         vim.cmd [[silent! highlight TabLineSel guibg=#F7768E]]
     end
     vim.api.nvim_set_hl(0, "CursorLine", {
