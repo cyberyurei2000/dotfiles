@@ -51,13 +51,11 @@ if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
     vim.cmd [[silent! colorscheme industry]]
 else
     vim.opt.termguicolors = true
-    vim.cmd [[silent! colorscheme tokyonight-night]]
-    if vim.g.colors_name == "tokyonight-night" then
-        vim.cmd [[silent! highlight TabLineSel guibg=#F7768E]]
-    end
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "TabLineSel", { bg = "#F7768E" })
     vim.api.nvim_set_hl(0, "CursorLine", {
         underline = true,
-        sp = "#565f89"
+        sp = "#AFAFAF"
     })
 end
 
@@ -93,10 +91,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- HIGHLIGHTS
-hl(0, "StatusLineNormal", {bg = "#2AC3DE", fg = "#222432"})
-hl(0, "StatusLineInsert", {bg = "#9ECE6A", fg = "#222432"})
-hl(0, "StatusLineVisual", {bg = "#BB9AF7", fg = "#222432"})
-hl(0, "StatusLineCommand", {bg = "#F7768E", fg = "#222432"})
+hl(0, "StatusLineNormal", {bg = "#88AFA2", fg = "#222432"})
+hl(0, "StatusLineInsert", {bg = "#90A959", fg = "#222432"})
+hl(0, "StatusLineVisual", {bg = "#AA759F", fg = "#222432"})
+hl(0, "StatusLineCommand", {bg = "#C8666D", fg = "#222432"})
 hl(0, "StatusLineReplace", {bg = "#FF9E64", fg = "#222432"})
 hl(0, "StatusLineSelect", {bg = "#CFC9C2", fg = "#222432"})
 hl(0, "StatusLineClock", {bg = "#828BB8", fg = "#222432"})

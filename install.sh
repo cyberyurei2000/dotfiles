@@ -123,21 +123,6 @@ setup_mpv_scripts() {
     mv "/tmp/mpv-osc-clock/fonts/FO-TVASAHI-GMorning.otf" "$MPV_CONFIG_PATH/fonts/"
 }
 
-setup_nvim_theme() {
-    NVIM_CONFIG_PATH="$XDG_CONFIG_HOME/nvim"
-
-    mkdir -p "$NVIM_CONFIG_PATH/colors"
-    mkdir -p "$NVIM_CONFIG_PATH/lua"
-
-    git clone "https://github.com/folke/tokyonight.nvim.git" "/tmp/tokyonight"
-    cp -r "/tmp/tokyonight/colors" "$NVIM_CONFIG_PATH/"
-
-    mkdir -p "$NVIM_CONFIG_PATH/lua/tokyonight"
-    cp /tmp/tokyonight/lua/tokyonight/*.lua "$NVIM_CONFIG_PATH/lua/tokyonight/"
-    cp -r "/tmp/tokyonight/lua/tokyonight/colors" "$NVIM_CONFIG_PATH/lua/tokyonight/"
-    cp -r "/tmp/tokyonight/lua/tokyonight/groups" "$NVIM_CONFIG_PATH/lua/tokyonight/"
-}
-
 setup_aria2
 setup_fontconfig
 setup_git
@@ -150,4 +135,3 @@ setup_ghostty
 setup_ssh
 setup_wineprefix
 setup_mpv_scripts
-setup_nvim_theme
