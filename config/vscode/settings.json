@@ -82,9 +82,11 @@
     "accessibility.signals.terminalBell": {
         "sound": "on"
     },
+    "terminal.external.linuxExec": "ghostty",
     "terminal.integrated.confirmOnExit": "always",
+    "terminal.integrated.enableImages": true,
     "terminal.integrated.enableVisualBell": true,
-    "terminal.integrated.fontFamily": "Cascadia Mono, Consolas, monospace",
+    "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, Hack, Noto Sans Mono, monospace",
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
@@ -98,32 +100,27 @@
     "terminal.integrated.shellIntegration.decorationsEnabled": "never",
     "terminal.integrated.smoothScrolling": true,
     "terminal.integrated.stickyScroll.enabled": false,
+    "terminal.integrated.windowsUseConptyDll": true,
     // WINDOW
     "window.commandCenter": true,
     "window.dialogStyle": "custom",
-    "window.menuBarVisibility": "compact",
     "window.titleBarStyle": "custom",
     // ANNOYANCES
-    "chat.agent.enabled": false,
-    "chat.commandCenter.enabled": false,
     "chat.disableAIFeatures": true,
-    "chat.sendElementsToChat.enabled": false,
     "extensions.autoUpdate": false,
     "extensions.ignoreRecommendations": true,
-    "inlineChat.lineNaturalLanguageHint": false,
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.initialHint": false,
     "update.showReleaseNotes": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
-    // PROGRAMMING LANGUAGES CONFIG
+    // PROGRAMMING LANGUAGES
     "html.format.indentInnerHtml": true,
-    "javascript.suggest.completeFunctionCalls": true,
-    "javascript.suggest.paths": false,
-    "javascript.validate.enable": false,
-    "typescript.suggest.paths": false,
     "[javascript]": {
         "editor.semanticHighlighting.enabled": false,
+        "js/ts.suggest.completeFunctionCalls": true,
+        "js/ts.suggest.paths": false,
+        "js/ts.validate.enabled": false,
     },
     "[markdown]": {
         "editor.wordWrap": "off",
@@ -157,7 +154,7 @@
             "strings": false
         }
     },
-    // EXTENSIONS CONFIG
+    // EXTENSIONS
     "material-icon-theme.activeIconPack": "none",
     "material-icon-theme.folders.theme": "classic",
     "path-autocomplete.disableUpOneFolder": false,
@@ -169,5 +166,6 @@
     },
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "window.menuBarVisibility": "compact"
 }
