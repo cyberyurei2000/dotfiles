@@ -49,11 +49,9 @@ function Set-Mpv {
     if($null -ne $IsDiskC) {
         New-Item -Path "$MpvConfigPath" -Name "mpv.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\mpv_windows.conf" -Force
         New-Item -Path "$MpvConfigPath" -Name "input.conf" -ItemType "HardItem" -Target "$Dir\config\mpv\input.conf" -Force
-        New-Item -Path "$MpvOptsPath" -Name "modernz.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\script-opts\modernz_windows.conf" -Force
     } else {
         Copy-Item -Path "$Dir\config\mpv\mpv_windows.conf" -Destination "$MpvConfigPath\mpv.conf" -Force
         Copy-Item -Path "$Dir\config\mpv\input.conf" -Destination "$MpvConfigPath\input.conf" -Force
-        Copy-Item -Path "$Dir\config\mpv\script-opts\modernz_windows.conf" -Destination "$MpvOptsPath\modernz.conf" -Force
     }
 }
 
@@ -125,13 +123,6 @@ function Set-MpvScripts {
 
     New-Item -Path "$MpvConfigPath" -Name "scripts" -ItemType "Directory" -Force
     New-Item -Path "$MpvConfigPath" -Name "fonts" -ItemType "Directory" -Force
-
-    git clone "https://github.com/Samillion/ModernZ.git" "$Temp\ModernZ"
-    Move-Item -Path "$Temp\ModernZ\modernz.lua" -Destination "$MpvConfigPath\scripts\" -Force
-    Move-Item -Path "$Temp\ModernZ\material-design-icons.ttf" -Destination "$MpvConfigPath\fonts\" -Force
-
-    git clone "https://github.com/po5/thumbfast.git" "$Temp\thumbfast"
-    Move-Item -Path "$Temp\thumbfast\thumbfast.lua" -Destination "$MpvConfigPath\scripts\" -Force
 
     git clone "https://github.com/cyberyurei2000/mpv-osc-clock.git" "$Temp\mpv-osc-clock"
     Move-Item -Path "$Temp\mpv-osc-clock\scripts\osc-clock.lua" -Destination "$MpvConfigPath\scripts\" -Force

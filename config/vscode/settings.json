@@ -104,6 +104,7 @@
     // WINDOW
     "window.commandCenter": true,
     "window.dialogStyle": "custom",
+    "window.menuBarVisibility": "compact",
     "window.titleBarStyle": "custom",
     // ANNOYANCES
     "chat.disableAIFeatures": true,
@@ -116,6 +117,16 @@
     "workbench.settings.enableNaturalLanguageSearch": false,
     // PROGRAMMING LANGUAGES
     "html.format.indentInnerHtml": true,
+    "json.schemaDownload.trustedDomains": {
+        "https://developer.microsoft.com/json-schemas/": true,
+        "https://github.com": true,
+        "https://json-schema.org/": true,
+        "https://json.schemastore.org/": true,
+        "https://raw.githubusercontent.com/devcontainers/spec/": true,
+        "https://raw.githubusercontent.com/microsoft/vscode/": true,
+        "https://schemastore.azurewebsites.net/": true,
+        "https://www.schemastore.org/": true
+    },
     "[javascript]": {
         "editor.semanticHighlighting.enabled": false,
         "js/ts.suggest.completeFunctionCalls": true,
@@ -166,6 +177,5 @@
     },
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
-    "python.analysis.typeCheckingMode": "basic",
-    "window.menuBarVisibility": "compact"
+    "python.analysis.typeCheckingMode": "basic"
 }

@@ -113,7 +113,7 @@ setup_mpv_scripts() {
 
     git clone "https://github.com/Samillion/ModernZ.git" "/tmp/ModernZ"
     mv "/tmp/ModernZ/modernz.lua" "$MPV_CONFIG_PATH/scripts/"
-    mv "/tmp/ModernZ/material-design-icons.ttf" "$MPV_CONFIG_PATH/fonts/"
+    mv "/tmp/ModernZ/modernz-icons.ttf" "$MPV_CONFIG_PATH/fonts/"
 
     git clone "https://github.com/po5/thumbfast.git" "/tmp/thumbfast"
     mv "/tmp/thumbfast/thumbfast.lua" "$MPV_CONFIG_PATH/scripts/"
