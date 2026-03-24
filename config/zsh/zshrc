@@ -3,21 +3,29 @@ autoload -Uz promptinit
 promptinit
 
 if [ -z $DISPLAY ]; then
+    BATTERY_PATH="/sys/class/power_supply/BAT0/capacity"
+    if [ -f $BATTERY_PATH ]; then
+        BATTERY="[$(cat $BATTERY_PATH)%%] "
+    else
+        BATTERY=""
+    fi
+
     CLOCK="[%*%f] "
 else
+    BATTERY=""
     CLOCK=""
 fi
 
 prompt_debian_setup() {
-    PS1="$CLOCK%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b%# "
+    PS1="$CLOCK$BATTERY%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b%# "
     PS2="%# "
 }
 prompt_default_setup() {
-    PS1="$CLOCK%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ "
+    PS1="$CLOCK$BATTERY%B%F{blue}%n@%m%f%b%B %F{red}%(4~|.../%3~|%~)%f%b ¥ "
     PS2="¥ "
 }
 prompt_server_setup() {
-    PS1="$CLOCK%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ "
+    PS1="$CLOCK$BATTERY%B%F{green}%n@%m%f%b%B %F{blue}%(4~|.../%3~|%~)%f%b ¥ "
     PS2="¥ "
 }
 prompt_themes+=( debian default server )
