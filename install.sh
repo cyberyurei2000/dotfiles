@@ -18,7 +18,11 @@ setup_aria2() {
     mkdir -p "$XDG_CONFIG_HOME/aria2"
     ARIA_CONFIG_PATH="$XDG_CONFIG_HOME/aria2"
 
-    ln -sf "$DIR/config/aria2/aria2.conf" "$ARIA_CONFIG_PATH/aria2.conf"
+    if [ $1 = "copy" ]; then
+        cp "$DIR/config/aria2/aria2.conf" "$ARIA_CONFIG_PATH/aria2.conf"
+    else
+        ln -sf "$DIR/config/aria2/aria2.conf" "$ARIA_CONFIG_PATH/aria2.conf"
+    fi
 }
 
 setup_fontconfig() {
@@ -32,8 +36,13 @@ setup_git() {
     mkdir -p "$XDG_CONFIG_HOME/git"
     GIT_CONFIG_PATH="$XDG_CONFIG_HOME/git"
 
-    ln -sf "$DIR/config/git/gitconfig" "$GIT_CONFIG_PATH/config"
-    ln -sf "$DIR/config/git/gitignore" "$GIT_CONFIG_PATH/ignore"
+    if [ $1 = "copy" ]; then
+        cp "$DIR/config/git/gitconfig" "$GIT_CONFIG_PATH/config"
+        cp "$DIR/config/git/gitignore" "$GIT_CONFIG_PATH/ignore"
+    else
+        ln -sf "$DIR/config/git/gitconfig" "$GIT_CONFIG_PATH/config"
+        ln -sf "$DIR/config/git/gitignore" "$GIT_CONFIG_PATH/ignore"
+    fi
 }
 
 setup_mpv() {
@@ -51,7 +60,11 @@ setup_nvim() {
     mkdir -p "$XDG_CONFIG_HOME/nvim"
     NVIM_CONFIG_PATH="$XDG_CONFIG_HOME/nvim"
 
-    ln -sf "$DIR/config/nvim/init.lua" "$NVIM_CONFIG_PATH/init.lua"
+    if [ $1 = "copy" ]; then
+        cp "$DIR/config/nvim/init.lua" "$NVIM_CONFIG_PATH/init.lua"
+    else
+        ln -sf "$DIR/config/nvim/init.lua" "$NVIM_CONFIG_PATH/init.lua"
+    fi
 }
 
 setup_zsh() {
@@ -62,23 +75,37 @@ setup_zsh() {
     	mkdir -p "${HOME}/.local/bin"
     fi
 
-    ln -sf "$DIR/config/zsh/zshrc" "$ZSH_CONFIG_PATH/.zshrc"
-    ln -sf "$DIR/config/zsh/zprofile" "$ZSH_CONFIG_PATH/.zprofile"
-    ln -sf "$DIR/config/zsh/zshenv" "$HOME/.zshenv"
+    if [ $1 = "copy" ]; then
+        cp "$DIR/config/zsh/zshrc" "$ZSH_CONFIG_PATH/.zshrc"
+        cp "$DIR/config/zsh/zprofile" "$ZSH_CONFIG_PATH/.zprofile"
+        cp "$DIR/config/zsh/zshenv" "$HOME/.zshenv"
+    else
+        ln -sf "$DIR/config/zsh/zshrc" "$ZSH_CONFIG_PATH/.zshrc"
+        ln -sf "$DIR/config/zsh/zprofile" "$ZSH_CONFIG_PATH/.zprofile"
+        ln -sf "$DIR/config/zsh/zshenv" "$HOME/.zshenv"
+    fi
 }
 
 setup_tmux() {
     mkdir -p "$XDG_CONFIG_HOME/tmux"
     TMUX_CONFIG_PATH="$XDG_CONFIG_HOME/tmux"
 
-    ln -sf "$DIR/config/tmux/tmux.conf" "$TMUX_CONFIG_PATH/tmux.conf"
+    if [ $1 = "copy" ]; then
+        cp "$DIR/config/tmux/tmux.conf" "$TMUX_CONFIG_PATH/tmux.conf"
+    else
+        ln -sf "$DIR/config/tmux/tmux.conf" "$TMUX_CONFIG_PATH/tmux.conf"
+    fi
 }
 
 setup_fastfetch() {
     mkdir -p "$XDG_CONFIG_HOME/fastfetch"
     FETCH_CONFIG_PATH="$XDG_CONFIG_HOME/fastfetch"
 
-    ln -sf "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
+    if [ $1 = "copy" ]; then
+        cp "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
+    else
+        ln -sf "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
+    fi
 }
 
 setup_ghostty() {
