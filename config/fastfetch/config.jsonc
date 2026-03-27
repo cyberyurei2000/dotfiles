@@ -6,7 +6,11 @@
     "modules": [
         {
             "type": "title",
-            "format": "───────────── \u001b[1m{1}@{2}\u001b[0m ─────────────"
+            "format": "\u001b[1m{1}@{2}\u001b[0m"
+        },
+        {
+            "type": "title",
+            "format": "──────────────────────────"
         },
         {
             "type": "host",
@@ -21,6 +25,11 @@
         {
             "type": "kernel",
             "key": "Kernel  ",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "uptime",
+            "key": "Uptime  ",
             "keyColor": "magenta"
         },
         {
@@ -51,11 +60,6 @@
         {
             "type": "packages",
             "key": "Packages",
-            "keyColor": "magenta"
-        },
-        {
-            "type": "uptime",
-            "key": "Uptime  ",
             "keyColor": "magenta"
         },
         {

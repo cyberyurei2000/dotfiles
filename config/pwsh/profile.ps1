@@ -19,14 +19,14 @@ function Prompt {
         if(!$Explorer) {
             Write-Host $(Get-Date -Format "[HH:mm] ") -NoNewline
         }
-        #Write-Host $($Domain + " ") -ForegroundColor "DarkCyan" -NoNewline
+        #Write-Host $($Domain + " ") -ForegroundColor "Blue" -NoNewline
         Write-Host $($Path) -NoNewline
         return " #> "
     } else {
         if(!$Explorer) {
             Write-Host $(Get-Date -Format "[HH:mm] ") -NoNewline
         }
-        #Write-Host $($Domain + " ") -ForegroundColor "DarkCyan" -NoNewline
+        #Write-Host $($Domain + " ") -ForegroundColor "Blue" -NoNewline
         Write-Host $($Path) -NoNewline
         return " ¥> "
     }
@@ -34,10 +34,24 @@ function Prompt {
 
 # Options
 Set-PSReadLineOption -PredictionSource None -ErrorAction SilentlyContinue
+Set-PSReadLineOption -Colors @{
+    Command   = "`e[38;5;252m"
+    Parameter = "`e[38;5;252m"
+    Number    = "`e[38;5;252m"
+    String    = "`e[38;5;252m"
+    Variable  = "`e[38;5;252m"
+    Member    = "`e[38;5;252m"
+    Type      = "`e[38;5;252m"
+    Comment   = "`e[38;5;252m"
+    Operator  = "`e[38;5;252m"
+    Default   = "`e[38;5;252m"
+}
+$PSStyle.FileInfo.Directory = "`e[36m"
 $env:POWERSHELL_TELEMETRY_OPTOUT = 1
 
-# Colors
-$PSStyle.FileInfo.Directory = "`e[36m"
+function Get-ChildItem {
+    Microsoft.PowerShell.Management\Get-ChildItem @args | Format-Table -HideTableHeaders
+}
 
 # Autocomplete
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
@@ -48,12 +62,16 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Ctrl+u -Function BackwardDeleteLine
 
 # Alias
-Set-Alias -Name vim -Value nvim
-Set-Alias -Name vi -Value nvim
-Set-Alias -Name aria2 -Value aria2c
 Remove-Item Alias:curl -ErrorAction SilentlyContinue
 Remove-Item Alias:wget -ErrorAction SilentlyContinue
 Remove-Item Alias:mkdir -ErrorAction SilentlyContinue
+Remove-Item Alias:ls -ErrorAction SilentlyContinue
+Remove-Item Alias:dir -ErrorAction SilentlyContinue
+Set-Alias -Name dir -Value Get-ChildItem
+Set-Alias -Name ls -Value Get-ChildItem
+Set-Alias -Name vim -Value nvim
+Set-Alias -Name vi -Value nvim
+Set-Alias -Name aria2 -Value aria2c
 
 # Custom commands
 function ll([String]$Path) {
