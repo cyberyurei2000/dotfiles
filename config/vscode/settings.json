@@ -65,6 +65,9 @@
     },
     // FILE EXPLORER
     "explorer.compactFolders": false,
+    "files.associations": {
+        "fonts.conf": "xml"
+    },
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
