@@ -143,9 +143,6 @@ setup_mpv_scripts() {
     mv "/tmp/ModernZ/modernz.lua" "$MPV_CONFIG_PATH/scripts/"
     mv "/tmp/ModernZ/modernz-icons.ttf" "$MPV_CONFIG_PATH/fonts/"
 
-    git clone "https://github.com/po5/thumbfast.git" "/tmp/thumbfast"
-    mv "/tmp/thumbfast/thumbfast.lua" "$MPV_CONFIG_PATH/scripts/"
-
     git clone "https://github.com/cyberyurei2000/mpv-osc-clock.git" "/tmp/mpv-osc-clock"
     mv "/tmp/mpv-osc-clock/scripts/osc-clock.lua" "$MPV_CONFIG_PATH/scripts/"
     mv "/tmp/mpv-osc-clock/fonts/FO-TVASAHI-GMorning.otf" "$MPV_CONFIG_PATH/fonts/"

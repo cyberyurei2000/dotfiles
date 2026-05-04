@@ -60,7 +60,8 @@
         {
             "type": "packages",
             "key": "Packages",
-            "keyColor": "magenta"
+            "keyColor": "magenta",
+            "format": "{?pacman}{pacman} (pacman),{?}{?dpkg}{dpkg} (dpkg),{?}{?rpm}{rpm} (rpm),{?}{?flatpak-all} {flatpak-all} (flatpak){?}"
         },
         {
             "type": "cpu",

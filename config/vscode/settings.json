@@ -113,6 +113,7 @@
     "chat.disableAIFeatures": true,
     "extensions.autoUpdate": false,
     "extensions.ignoreRecommendations": true,
+    "git.addAICoAuthor": "off",
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.initialHint": false,
