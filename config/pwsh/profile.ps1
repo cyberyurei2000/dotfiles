@@ -178,8 +178,3 @@ function enablevbs {
         Write-Host "pwsh: this command requires administrator rights to run!" -ForegroundColor "Red"
     }
 }
-
-function sysinfo {
-    Write-Host ""
-    fastfetch && Write-Host ""
-}

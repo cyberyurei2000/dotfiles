@@ -85,6 +85,12 @@
             "type": "colors",
             "paddingLeft": 2,
             "symbol": "block"
+        },
+        {
+            "type": "break"
+        },
+        {
+            "type": "break"
         }
     ]
 }
