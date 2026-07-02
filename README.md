@@ -25,6 +25,12 @@ My configuration files and scripts for Windows and Linux.
 $ ./install.sh
 ```
 
+__OBS:__ If you want to just copy the config files instead of making links, run it with the `-c` argument.
+
+```
+$ ./install.sh -c
+```
+
 #### Windows
 
 ```

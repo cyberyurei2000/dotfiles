@@ -120,7 +120,7 @@ function srm() {
 
 function restartshell() {
     if command -v plasmashell > /dev/null; then
-        plasmashell --replace & disown
+        nohup plasmashell --replace > /dev/null 2>&1 &
     else
         printf "zsh: command not supported in this environment!"
     fi

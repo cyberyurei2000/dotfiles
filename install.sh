@@ -5,7 +5,15 @@
 # https://opensource.org/license/0bsd
 
 DIR=$(pwd)
-ARG=$1
+
+IS_COPY=0
+while getopts ":c" option; do
+    case $option in
+        c)
+            IS_COPY=1
+            ;;
+    esac
+done
 
 if [ "$XDG_CONFIG_HOME" = "" ]; then
     XDG_CONFIG_HOME="$HOME/.config"
@@ -19,7 +27,7 @@ setup_aria2() {
     mkdir -p "$XDG_CONFIG_HOME/aria2"
     ARIA_CONFIG_PATH="$XDG_CONFIG_HOME/aria2"
 
-    if [ "$ARG" = "copy" ]; then
+    if (( IS_COPY )); then
         cp -f "$DIR/config/aria2/aria2.conf" "$ARIA_CONFIG_PATH/aria2.conf"
     else
         ln -sf "$DIR/config/aria2/aria2.conf" "$ARIA_CONFIG_PATH/aria2.conf"
@@ -37,7 +45,7 @@ setup_git() {
     mkdir -p "$XDG_CONFIG_HOME/git"
     GIT_CONFIG_PATH="$XDG_CONFIG_HOME/git"
 
-    if [ "$ARG" = "copy" ]; then
+    if (( IS_COPY )); then
         cp -f "$DIR/config/git/gitconfig" "$GIT_CONFIG_PATH/config"
         cp -f "$DIR/config/git/gitignore" "$GIT_CONFIG_PATH/ignore"
     else
@@ -61,7 +69,7 @@ setup_nvim() {
     mkdir -p "$XDG_CONFIG_HOME/nvim"
     NVIM_CONFIG_PATH="$XDG_CONFIG_HOME/nvim"
 
-    if [ "$ARG" = "copy" ]; then
+    if (( IS_COPY )); then
         cp -f "$DIR/config/nvim/init.lua" "$NVIM_CONFIG_PATH/init.lua"
     else
         ln -sf "$DIR/config/nvim/init.lua" "$NVIM_CONFIG_PATH/init.lua"
@@ -76,7 +84,7 @@ setup_zsh() {
     	mkdir -p "${HOME}/.local/bin"
     fi
 
-    if [ "$ARG" = "copy" ]; then
+    if (( IS_COPY )); then
         cp -f "$DIR/config/zsh/zshrc" "$ZSH_CONFIG_PATH/.zshrc"
         cp -f "$DIR/config/zsh/zprofile" "$ZSH_CONFIG_PATH/.zprofile"
         cp -f "$DIR/config/zsh/zshenv" "$HOME/.zshenv"
@@ -91,7 +99,7 @@ setup_tmux() {
     mkdir -p "$XDG_CONFIG_HOME/tmux"
     TMUX_CONFIG_PATH="$XDG_CONFIG_HOME/tmux"
 
-    if [ "$ARG" = "copy" ]; then
+    if (( IS_COPY )); then
         cp -f "$DIR/config/tmux/tmux.conf" "$TMUX_CONFIG_PATH/tmux.conf"
     else
         ln -sf "$DIR/config/tmux/tmux.conf" "$TMUX_CONFIG_PATH/tmux.conf"
@@ -102,7 +110,7 @@ setup_fastfetch() {
     mkdir -p "$XDG_CONFIG_HOME/fastfetch"
     FETCH_CONFIG_PATH="$XDG_CONFIG_HOME/fastfetch"
 
-    if [ "$ARG" = "copy" ]; then
+    if (( IS_COPY )); then
         cp -f "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
     else
         ln -sf "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
@@ -114,6 +122,7 @@ setup_ghostty() {
     GTTY_CONFIG_PATH="$XDG_CONFIG_HOME/ghostty"
 
     ln -sf "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
+    #cp -rf "$DIR/config/ghostty/themes" "$GTTY_CONFIG_PATH/themes"
 }
 
 setup_ssh() {
