@@ -122,7 +122,7 @@ setup_ghostty() {
     GTTY_CONFIG_PATH="$XDG_CONFIG_HOME/ghostty"
 
     ln -sf "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
-    #cp -rf "$DIR/config/ghostty/themes" "$GTTY_CONFIG_PATH/themes"
+    cp -rf "$DIR/config/ghostty/themes" "$GTTY_CONFIG_PATH/themes"
 }
 
 setup_ssh() {
@@ -154,7 +154,6 @@ setup_mpv_scripts() {
 
     git clone "https://github.com/cyberyurei2000/mpv-osc-clock.git" "/tmp/mpv-osc-clock"
     mv "/tmp/mpv-osc-clock/scripts/osc-clock.lua" "$MPV_CONFIG_PATH/scripts/"
-    mv "/tmp/mpv-osc-clock/fonts/FO-TVASAHI-GMorning.otf" "$MPV_CONFIG_PATH/fonts/"
 }
 
 setup_aria2

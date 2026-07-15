@@ -1,5 +1,6 @@
 #background-opacity = 0.8
 #background-blur = true
+theme = HorizonNK
 background-opacity = 0.9
 bell-features = "no-title"
 font-size = 10

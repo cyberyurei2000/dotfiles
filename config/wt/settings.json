@@ -72,9 +72,15 @@
     "schemes":
     [
         {
-            "background": "#212121",
+            "name": "Afterglow",
             "black": "#151515",
             "blue": "#6C99BB",
+            "cyan": "#7DD6CF",
+            "green": "#7E8E50",
+            "purple": "#9F4E85",
+            "red": "#AC4142",
+            "white": "#D0D0D0",
+            "yellow": "#E5B567",
             "brightBlack": "#505050",
             "brightBlue": "#6C99BB",
             "brightCyan": "#7DD6CF",
@@ -83,16 +89,10 @@
             "brightRed": "#AC4142",
             "brightWhite": "#F5F5F5",
             "brightYellow": "#E5B567",
-            "cursorColor": "#D0D0D0",
-            "cyan": "#7DD6CF",
+            "background": "#212121",
             "foreground": "#D0D0D0",
-            "green": "#7E8E50",
-            "name": "Afterglow",
-            "purple": "#9F4E85",
-            "red": "#AC4142",
-            "selectionBackground": "#303030",
-            "white": "#D0D0D0",
-            "yellow": "#E5B567"
+            "cursorColor": "#D0D0D0",
+            "selectionBackground": "#303030"
         }
     ],
     "theme": "dark",
