@@ -156,15 +156,21 @@ setup_mpv_scripts() {
     mv "/tmp/mpv-osc-clock/scripts/osc-clock.lua" "$MPV_CONFIG_PATH/scripts/"
 }
 
-setup_aria2
-setup_fontconfig
-setup_git
-setup_mpv
-setup_nvim
-setup_zsh
-setup_tmux
-setup_fastfetch
-setup_ghostty
-setup_ssh
-setup_wineprefix
-setup_mpv_scripts
+if [ "$(uname -m)" = "aarch64" ]; then
+    setup_nvim
+    setup_zsh
+    setup_fastfetch
+else
+    setup_aria2
+    setup_fontconfig
+    setup_git
+    setup_mpv
+    setup_nvim
+    setup_zsh
+    setup_tmux
+    setup_fastfetch
+    setup_ghostty
+    setup_ssh
+    setup_wineprefix
+    setup_mpv_scripts
+fi
