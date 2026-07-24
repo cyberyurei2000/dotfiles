@@ -4,7 +4,7 @@
 # Released under the 0BSD License
 # https://opensource.org/license/0bsd
 
-DIR=$(pwd)
+DIR="$(pwd)"
 
 IS_COPY=0
 while getopts ":c" option; do

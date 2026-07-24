@@ -1,22 +1,21 @@
 {
     // WORKBENCH
-    "workbench.colorCustomizations": {
-        "[One Dark Pro]": {
-            "badge.background": "#ffffff10",
-            "editor.linkedEditingBackground": "#ffffff10",
-            //"tab.activeBorderTop": "#528bff"
-            "tab.activeBorderTop": "#4d78cc",
-            "tab.activeBorder": "#00000000",
-            "widget.shadow": "#0000008c"
-        },
-        "[Tokyo Night]": {
-            "widget.shadow": "#0000008c"
-        },
-        "[Tokyo Night Storm]": {
-            "widget.shadow": "#0000008c"
-        }
-    },
-    "workbench.colorTheme": "One Dark Pro",
+    //"workbench.colorCustomizations": {
+    //    "[One Dark Pro Darker]": {
+    //        "badge.background": "#ffffff10",
+    //        "editor.linkedEditingBackground": "#ffffff10",
+    //        //"tab.activeBorderTop": "#528bff"
+    //        "tab.activeBorderTop": "#4d78cc",
+    //        "tab.activeBorder": "#00000000",
+    //        "widget.shadow": "#0000008c"
+    //    },
+    //    "[Tokyo Night]": {
+    //        "widget.shadow": "#0000008c"
+    //    },
+    //    "[Tokyo Night Storm]": {
+    //        "widget.shadow": "#0000008c"
+    //    }
+    //},
     "workbench.iconTheme": "material-icon-theme",
     "workbench.commandPalette.history": 0,
     "workbench.editor.empty.hint": "hidden",
@@ -27,6 +26,7 @@
     "workbench.settings.editor": "json",
     "workbench.tips.enabled": false,
     "breadcrumbs.enabled": false,
+    "workbench.experimental.modernUI": true,
     // EDITOR
     "editor.bracketPairColorization.enabled": false,
     "editor.codeLens": false,
@@ -42,6 +42,7 @@
     "editor.parameterHints.enabled": false,
     "editor.renderWhitespace": "trailing",
     "editor.rulers": [120],
+    "editor.selectionClipboard": false,
     "editor.semanticHighlighting.enabled": true,
     "editor.scrollBeyondLastLine": false,
     "editor.smoothScrolling": true,
@@ -111,7 +112,7 @@
     "window.titleBarStyle": "custom",
     // ANNOYANCES
     "chat.disableAIFeatures": true,
-    "extensions.autoUpdate": false,
+    "extensions.autoUpdate": "off",
     "extensions.ignoreRecommendations": true,
     "git.addAICoAuthor": "off",
     "security.workspace.trust.enabled": false,
@@ -181,5 +182,6 @@
     },
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "workbench.colorTheme": "One Dark Pro Darker"
 }

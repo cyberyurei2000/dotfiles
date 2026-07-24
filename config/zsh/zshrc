@@ -4,11 +4,7 @@ promptinit
 
 if [ -z $DISPLAY ]; then
     BATTERY_PATH="/sys/class/power_supply/BAT0/capacity"
-    if [ -f $BATTERY_PATH ]; then
-        BATTERY="[$(cat $BATTERY_PATH)%%] "
-    else
-        BATTERY=""
-    fi
+
 
     CLOCK="[%*%f] "
 else
@@ -89,7 +85,7 @@ alias svim="sudoedit"
 alias ping="ping -c 5"
 alias aria2="aria2c"
 if command -v kioclient > /dev/null; then
-    alias code="GTK_USE_PORTAL=1 ELECTRON_TRASH=kioclient code"
+    alias code="GTK_USE_PORTAL=1 ELECTRON_TRASH=kioclient DISPLAY= code"
 fi
 if command -v prime-run > /dev/null; then
     alias ffmpeg="prime-run ffmpeg -hide_banner"
