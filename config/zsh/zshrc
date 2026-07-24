@@ -4,7 +4,11 @@ promptinit
 
 if [ -z $DISPLAY ]; then
     BATTERY_PATH="/sys/class/power_supply/BAT0/capacity"
-
+    if [ -f $BATTERY_PATH ]; then
+        BATTERY="[$(cat $BATTERY_PATH)%%] "
+    else
+        BATTERY=""
+    fi
 
     CLOCK="[%*%f] "
 else
@@ -97,7 +101,7 @@ if command -v msedit > /dev/null; then
 fi
 
 # Custom commands
-function mkcd() {
+mkcd() {
     if [ -d $1 ]; then
         printf -P "zsh: \"$1\" already exists!"
         cd $1
@@ -106,7 +110,7 @@ function mkcd() {
     fi
 }
 
-function srm() {
+srm() {
     if read -q "choice?zsh: sure you want to secure delete \"$1\"?"; then
         shred -u $1
     else
@@ -114,7 +118,7 @@ function srm() {
     fi
 }
 
-function restartshell() {
+restartshell() {
     if command -v plasmashell > /dev/null; then
         nohup plasmashell --replace > /dev/null 2>&1 &
     else
@@ -122,7 +126,7 @@ function restartshell() {
     fi
 }
 
-function activate() {
+activate() {
     VENV_PATH="./.venv/bin/activate"
     if [ -f $VENV_PATH ]; then
         source $VENV_PATH
@@ -131,7 +135,7 @@ function activate() {
     fi
 }
 
-function clear-screen-scrollback() {
+clear-screen-scrollback() {
     echoti civis > "$TTY"
     printf "%b" "\e[H\e[2J" > "$TTY"
     zle .reset-prompt
