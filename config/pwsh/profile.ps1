@@ -162,19 +162,3 @@ function sha1sum {
 function sha256sum {
     Get-FileHash -Algorithm SHA256 $Args
 }
-
-function disablevbs {
-    if($IsAdmin) {
-        bcdedit /set hypervisorlaunchtype off
-    } else {
-        Write-Host "pwsh: this command requires administrator rights to run!" -ForegroundColor "Red"
-    }
-}
-
-function enablevbs {
-    if($IsAdmin) {
-        bcdedit /set hypervisorlaunchtype on
-    } else {
-        Write-Host "pwsh: this command requires administrator rights to run!" -ForegroundColor "Red"
-    }
-}
