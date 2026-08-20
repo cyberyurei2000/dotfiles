@@ -1,26 +1,28 @@
 {
     // WORKBENCH
-    //"workbench.colorCustomizations": {
-    //    "[One Dark Pro Darker]": {
-    //        "badge.background": "#ffffff10",
-    //        "editor.linkedEditingBackground": "#ffffff10",
-    //        //"tab.activeBorderTop": "#528bff"
-    //        "tab.activeBorderTop": "#4d78cc",
-    //        "tab.activeBorder": "#00000000",
-    //        "widget.shadow": "#0000008c"
-    //    },
-    //    "[Tokyo Night]": {
-    //        "widget.shadow": "#0000008c"
-    //    },
-    //    "[Tokyo Night Storm]": {
-    //        "widget.shadow": "#0000008c"
-    //    }
-    //},
+    "workbench.colorCustomizations": {
+        "[One Dark Pro Darker]": {
+            "badge.background": "#ffffff10",
+            "editor.linkedEditingBackground": "#ffffff10",
+            //"tab.activeBorderTop": "#528bff"
+            "tab.activeBorderTop": "#4d78cc",
+            "tab.activeBorder": "#00000000",
+            "widget.shadow": "#0000008c"
+        },
+        "[Tokyo Night]": {
+            "widget.shadow": "#0000008c"
+        },
+        "[Tokyo Night Storm]": {
+            "widget.shadow": "#0000008c"
+        }
+    },
+    "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.commandPalette.history": 0,
     "workbench.editor.empty.hint": "hidden",
     "workbench.editor.languageDetection": false,
     "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.tabSizing": "fixed",
     "workbench.layoutControl.type": "toggles",
     "workbench.list.smoothScrolling": true,
     "workbench.settings.editor": "json",
@@ -104,12 +106,13 @@
     "terminal.integrated.shellIntegration.decorationsEnabled": "never",
     "terminal.integrated.smoothScrolling": true,
     "terminal.integrated.stickyScroll.enabled": false,
-    "terminal.integrated.windowsUseConptyDll": true,
     // WINDOW
     "window.commandCenter": true,
     "window.dialogStyle": "custom",
     "window.menuBarVisibility": "compact",
     "window.titleBarStyle": "custom",
+    // OTHERS
+    "network.meteredConnection": "off",
     // ANNOYANCES
     "chat.disableAIFeatures": true,
     "extensions.autoUpdate": "off",
@@ -183,5 +186,4 @@
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "basic",
-    "workbench.colorTheme": "One Dark Pro Darker"
 }

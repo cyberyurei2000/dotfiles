@@ -8,12 +8,15 @@ vim.opt.backup = false
 vim.opt.swapfile = false
 
 vim.opt.fileencoding = "utf-8"
-vim.opt.fileformats = {"unix", "dos"}
-vim.opt.backspace = {"start", "eol", "indent"}
+vim.opt.fileformats = { "unix", "dos" }
+vim.opt.backspace = { "start", "eol", "indent" }
 
 vim.cmd [[silent! language en_US.UTF-8]]
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
+
+vim.opt.title = true
+vim.opt.titlestring = "%t%m - nvim"
 
 vim.opt.cursorline = true
 vim.opt.wrap = false
@@ -26,7 +29,8 @@ vim.opt.tabstop = 4
 vim.opt.showtabline = 2
 
 vim.opt.list = true
-vim.opt.listchars = {tab = ">_", trail = "_", eol = "↲"}
+vim.opt.listchars = { tab = ">_", trail = "_", eol = "↲" }
+vim.opt.fillchars = { eob = " " }
 vim.opt.shortmess:append({I = true})
 
 vim.opt.mouse = "a"
@@ -52,7 +56,8 @@ if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
 else
     vim.opt.termguicolors = true
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "TabLineSel", { bg = "#F7768E" })
+    vim.api.nvim_set_hl(0, "TabLineSel", { bg = "#4D78CC" })
+    vim.api.nvim_set_hl(0, "StatusLine", { bg = "#2C2E33" })
     vim.api.nvim_set_hl(0, "CursorLine", {
         underline = true,
         sp = "#AFAFAF"
@@ -91,13 +96,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- HIGHLIGHTS
-hl(0, "StatusLineNormal", {bg = "#88AFA2", fg = "#222432"})
-hl(0, "StatusLineInsert", {bg = "#90A959", fg = "#222432"})
-hl(0, "StatusLineVisual", {bg = "#AA759F", fg = "#222432"})
-hl(0, "StatusLineCommand", {bg = "#C8666D", fg = "#222432"})
-hl(0, "StatusLineReplace", {bg = "#FF9E64", fg = "#222432"})
-hl(0, "StatusLineSelect", {bg = "#CFC9C2", fg = "#222432"})
-hl(0, "StatusLineClock", {bg = "#828BB8", fg = "#222432"})
+hl(0, "StatusLineNormal", { bg = "#A7C080", fg = "#2C2E33" })
+hl(0, "StatusLineInsert", { bg = "#7FBBB3", fg = "#2C2E33" })
+hl(0, "StatusLineVisual", { bg = "#D699B6", fg = "#2C2E33" })
+hl(0, "StatusLineCommand", { bg = "#E67E80", fg = "#2C2E33" })
+hl(0, "StatusLineReplace", { bg = "#E69875", fg = "#2C2E33" })
+hl(0, "StatusLineSelect", { bg = "#CFC9C2", fg = "#2C2E33" })
+hl(0, "StatusLineClock", { bg = "#828BB8", fg = "#2C2E33" })
 
 -- FUNCTIONS
 local function vi_mode()
@@ -151,11 +156,11 @@ end
 
 local function fileformat()
     if vim.bo.fileformat == "unix" then
-        return "Unix(LF)"
+        return "Unix[LF]"
     elseif vim.bo.fileformat == "dos" then
-        return "DOS(CRLF)"
+        return "DOS[CRLF]"
     elseif vim.bo.fileformat == "mac" then
-        return "Mac(CR)"
+        return "Mac[CR]"
     else
         return string.format("%s", vim.bo.fileformat):gsub("^%l", string.upper)
     end
@@ -175,11 +180,13 @@ vim.opt.laststatus = 2
 function StatusLine()
     local filetype = string.format("%s", vim.bo.filetype):gsub("^%l", string.upper)
     local fileencoding = string.format("  %s  ", vim.opt.fileencoding:get()):upper()
+    local modified = vim.bo.modified and "+" or ""
     return table.concat({
         mode_colors(),
         vi_mode(),
         "%*",
         " %.40F ",
+        modified,
         "%=",
         filetype,
         fileencoding,
