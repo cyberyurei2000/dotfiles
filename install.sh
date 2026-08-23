@@ -119,10 +119,16 @@ setup_fastfetch() {
 
 setup_ghostty() {
     mkdir -p "$XDG_CONFIG_HOME/ghostty"
+    mkdir -p "$XDG_CONFIG_HOME/ghostty/themes"
     GTTY_CONFIG_PATH="$XDG_CONFIG_HOME/ghostty"
 
-    ln -sf "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
-    cp -rf "$DIR/config/ghostty/themes" "$GTTY_CONFIG_PATH/themes"
+    if [ $IS_COPY -eq 1 ]; then
+        cp -f "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
+    else
+        ln -sf "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
+    fi
+
+    cp -rf "$DIR/config/ghostty/themes/*" "$GTTY_CONFIG_PATH/themes/"
 }
 
 setup_ssh() {
