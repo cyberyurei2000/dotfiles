@@ -94,6 +94,14 @@
     "terminal.integrated.enableVisualBell": true,
     "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, Hack, Noto Sans Mono, monospace",
     "terminal.integrated.fontSize": 14,
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "zsh",
+            "icon": "terminal-linux",
+        },
+        "bash": null,
+        "JavaScript Debug Terminal": null,
+    },
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
             "source": "PowerShell",
@@ -103,6 +111,8 @@
             ],
         }
     },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
     "terminal.integrated.shellIntegration.decorationsEnabled": "never",
     "terminal.integrated.smoothScrolling": true,
     "terminal.integrated.stickyScroll.enabled": false,
