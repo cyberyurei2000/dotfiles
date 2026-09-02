@@ -7,11 +7,19 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.opt.backup = false
 vim.opt.swapfile = false
 
-vim.opt.fileencoding = "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencodings = {
+    "ucs-bom",                -- UTF-16/32 BOM marks
+    "utf-8",                  -- UTF-8
+    "euc-jp",                 -- EUC-JP
+    "sjis",                   -- Shift JIS
+    "cp1252",                 -- Windows-1252
+    "latin1",                 -- ISO-8859-1
+}
 vim.opt.fileformats = { "unix", "dos" }
 vim.opt.backspace = { "start", "eol", "indent" }
 
-vim.cmd [[silent! language en_US.UTF-8]]
+vim.api.nvim_exec("language en_US.UTF8", true)
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
 
@@ -52,7 +60,9 @@ map("i", "{", "{}<left>")
 
 -- THEME
 if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
-    vim.cmd [[silent! colorscheme industry]]
+    vim.api.nvim_exec("silent! colorscheme industry", true)
+    vim.api.nvim_set_hl(0, "TabLineSel", { ctermbg = 12 })
+    vim.api.nvim_set_hl(0, "TabLineFill", { ctermbg = 7 })
 else
     vim.opt.termguicolors = true
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -65,8 +75,8 @@ else
 end
 
 -- LANGUAGE SPECIFIC
-autocmd({"BufRead", "BufEnter"}, {
-    pattern = {"*.txt"},
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "text",
     callback = function()
         vim.opt.wrap = true
         vim.opt.linebreak = true
@@ -74,12 +84,20 @@ autocmd({"BufRead", "BufEnter"}, {
         vim.opt.cindent = false
     end
 })
-autocmd({"BufRead", "BufEnter"}, {
-    pattern = {"*.ps1"},
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "ps1",
     callback = function()
-        vim.opt.fileformats = "dos"
+        vim.opt.fileformat = "dos"
     end
 })
+if vim.loop.os_uname().sysname == "Windows_NT" then
+    vim.api.nvim_create_autocmd("BufNewFile", {
+        pattern = "*.txt",
+        callback = function()
+            vim.opt.fileformat = "dos"
+        end
+    })
+end
 
 -- FILETYPES
 vim.api.nvim_create_autocmd("FileType", {
@@ -96,13 +114,20 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- HIGHLIGHTS
-hl(0, "StatusLineNormal", { bg = "#A7C080", fg = "#2C2E33" })
-hl(0, "StatusLineInsert", { bg = "#7FBBB3", fg = "#2C2E33" })
-hl(0, "StatusLineVisual", { bg = "#D699B6", fg = "#2C2E33" })
-hl(0, "StatusLineCommand", { bg = "#E67E80", fg = "#2C2E33" })
-hl(0, "StatusLineReplace", { bg = "#E69875", fg = "#2C2E33" })
-hl(0, "StatusLineSelect", { bg = "#CFC9C2", fg = "#2C2E33" })
-hl(0, "StatusLineClock", { bg = "#828BB8", fg = "#2C2E33" })
+if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
+    vim.api.nvim_set_hl(0, "StatusLineNormal", { ctermbg = 10 })
+    vim.api.nvim_set_hl(0, "StatusLineInsert", { ctermbg = 14 })
+    vim.api.nvim_set_hl(0, "StatusLineVisual", { ctermbg = 13 })
+    vim.api.nvim_set_hl(0, "StatusLineCommand", { ctermbg = 9 })
+else
+    vim.api.nvim_set_hl(0, "StatusLineNormal", { bg = "#A7C080", fg = "#2C2E33" })
+    vim.api.nvim_set_hl(0, "StatusLineInsert", { bg = "#7FBBB3", fg = "#2C2E33" })
+    vim.api.nvim_set_hl(0, "StatusLineVisual", { bg = "#D699B6", fg = "#2C2E33" })
+    vim.api.nvim_set_hl(0, "StatusLineCommand", { bg = "#E67E80", fg = "#2C2E33" })
+    vim.api.nvim_set_hl(0, "StatusLineReplace", { bg = "#E69875", fg = "#2C2E33" })
+    vim.api.nvim_set_hl(0, "StatusLineSelect", { bg = "#CFC9C2", fg = "#2C2E33" })
+    vim.api.nvim_set_hl(0, "StatusLineClock", { bg = "#828BB8", fg = "#2C2E33" })
+end
 
 -- FUNCTIONS
 local function vi_mode()
