@@ -6,7 +6,7 @@
     "modules": [
         {
             "type": "title",
-            "format": "\u001b[1m{1}@{2}\u001b[0m"
+            "format": "\u001b[1m{user-name}@{host-name}\u001b[0m"
         },
         {
             "type": "title",

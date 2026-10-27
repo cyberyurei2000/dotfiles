@@ -96,9 +96,9 @@ function Set-Fastfetch() {
     $FetchConfigPath = "$HOME\.config\fastfetch"
 
     if($null -ne $IsDiskC) {
-        New-Item -Path "$FetchConfigPath" -Name "config.jsonc" -ItemType "HardLink" -Target "$Dir\config\fastfetch\config.jsonc" -Force
+        New-Item -Path "$FetchConfigPath" -Name "config.jsonc" -ItemType "HardLink" -Target "$Dir\config\fastfetch\config_windows.jsonc" -Force
     } else {
-        Copy-Item -Path "$Dir\config\fastfetch\config.jsonc" -Destination "$FetchConfigPath\config.jsonc" -Force
+        Copy-Item -Path "$Dir\config\fastfetch\config_windows.jsonc" -Destination "$FetchConfigPath\config.jsonc" -Force
     }
 }
 

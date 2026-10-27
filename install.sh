@@ -111,9 +111,9 @@ setup_fastfetch() {
     FETCH_CONFIG_PATH="$XDG_CONFIG_HOME/fastfetch"
 
     if [ $IS_COPY -eq 1 ]; then
-        cp -f "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
+        cp -f "$DIR/config/fastfetch/config_linux.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
     else
-        ln -sf "$DIR/config/fastfetch/config.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
+        ln -sf "$DIR/config/fastfetch/config_linux.jsonc" "$FETCH_CONFIG_PATH/config.jsonc"
     fi
 }
 

@@ -4,8 +4,8 @@
         "[One Dark Pro Darker]": {
             "badge.background": "#ffffff10",
             "editor.linkedEditingBackground": "#ffffff10",
-            //"tab.activeBorderTop": "#528bff"
-            "tab.activeBorderTop": "#4d78cc",
+            "tab.activeBorderTop": "#528bff"
+            //"tab.activeBorderTop": "#4d78cc",
             "tab.activeBorder": "#00000000",
             "widget.shadow": "#0000008c"
         },
@@ -18,11 +18,13 @@
     },
     "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.accounts.showAvatar": false,
+    "workbench.browser.searchEngine": "none",
     "workbench.commandPalette.history": 0,
     "workbench.editor.empty.hint": "hidden",
     "workbench.editor.languageDetection": false,
-    "workbench.editor.pinnedTabsOnSeparateRow": true,
     "workbench.editor.tabSizing": "fixed",
+    "workbench.editor.tabSizingFixedMaxWidth": 180,
     "workbench.layoutControl.type": "toggles",
     "workbench.list.smoothScrolling": true,
     "workbench.settings.editor": "json",
@@ -118,6 +120,7 @@
     "terminal.integrated.stickyScroll.enabled": false,
     // WINDOW
     "window.commandCenter": true,
+    "window.density.layout": "default",
     "window.dialogStyle": "custom",
     "window.menuBarVisibility": "compact",
     "window.titleBarStyle": "custom",
