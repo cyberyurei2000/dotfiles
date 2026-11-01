@@ -1,14 +1,6 @@
 {
     // WORKBENCH
     "workbench.colorCustomizations": {
-        //"[One Dark Pro Darker]": {
-        //    "badge.background": "#ffffff10",
-        //    "editor.linkedEditingBackground": "#ffffff10",
-        //    "tab.activeBorderTop": "#528bff",
-        //    //"tab.activeBorderTop": "#4d78cc",
-        //    "tab.activeBorder": "#00000000",
-        //    "widget.shadow": "#0000008c",
-        //},
         "[Tokyo Night Storm]": {
             "tab.activeBorderTop": "#3d59a1",
             "tab.activeBorder": "#1f2335",
@@ -88,7 +80,7 @@
                 "type": "debugpy",
                 "request": "launch",
                 "program": "${file}",
-                "console": "integratedTerminal"
+                "console": "integratedTerminal",
             },
         ]
     },
