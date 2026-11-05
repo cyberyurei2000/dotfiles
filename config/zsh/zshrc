@@ -2,19 +2,22 @@
 autoload -Uz promptinit
 promptinit
 
-if [ -z $DISPLAY ]; then
-    BATTERY_PATH="/sys/class/power_supply/BAT0/capacity"
-    if [ -f $BATTERY_PATH ]; then
-        BATTERY="[$(cat $BATTERY_PATH)%%] "
-    else
-        BATTERY=""
-    fi
+case "$(tty)" in
+    (/dev/tty[0-9]*|/dev/ttyv[0-9]*)
+        BATTERY_PATH="/sys/class/power_supply/BAT0/capacity"
+        if [ -f $BATTERY_PATH ]; then
+            BATTERY="[$(cat $BATTERY_PATH)%%] "
+        else
+            BATTERY=""
+        fi
 
-    CLOCK="[%*%f] "
-else
-    BATTERY=""
-    CLOCK=""
-fi
+        CLOCK="[%*%f] "
+    ;;
+    *)
+        BATTERY=""
+        CLOCK=""
+    ;;
+esac
 
 prompt_debian_setup() {
     PS1="$CLOCK$BATTERY%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b%# "
@@ -38,7 +41,7 @@ fi
 
 PROMPT_EOL_MARK=""
 
-# History
+# HISTORY
 HISTFILE="$XDG_CONFIG_HOME/zsh/history"
 HISTSIZE=5000
 SAVEHIST=5000
@@ -54,25 +57,32 @@ bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 bindkey "^R" history-incremental-pattern-search-backward
 
-# Completion
+# COMPLETION
 autoload -Uz compinit
 compinit
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Z}"
 zstyle ":completion:*" menu select
 
-# Directory options
+# OPTIONS
 setopt AUTO_CD
+bindkey -e
+zle -N bracketed-paste {bracketed-paste,zle-line-init} 2>/dev/null
 
-# Alias
-alias ls="ls --color=auto --group-directories-first --show-control-chars"
+# ALIAS
+if [ "$(uname -s)" = "Linux" ]; then
+    alias ls="ls --color=auto --group-directories-first --show-control-chars"
+    alias dir="dir --color=auto"
+    alias ps="ps --sort=start_time"
+    alias free="free -m"
+else
+    alias ls="ls -G"
+fi
+
 alias ll="ls -la"
 alias la="ls -a"
-alias dir="dir --color=auto"
 alias mv="mv -i"
 alias rm="rm -i"
-alias ps="ps --sort=start_time"
 alias df="df -h"
-alias free="free -m"
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
@@ -101,21 +111,13 @@ if command -v msedit > /dev/null; then
     alias edit="msedit"
 fi
 
-# Custom commands
+# CUSTOM COMMANDS
 mkcd() {
-    if [ -d $1 ]; then
-        printf -P "zsh: \"$1\" already exists!"
-        cd $1
+    if [ -d "$1" ]; then
+        printf -P "zsh: \"%s\" already exists!\n" "$1"
+        cd "$1"
     else
-        mkdir -p $1 && cd $1
-    fi
-}
-
-srm() {
-    if read -q "choice?zsh: sure you want to secure delete \"$1\"?"; then
-        shred -u $1
-    else
-        return 1
+        mkdir -p "$1" && cd "$1"
     fi
 }
 

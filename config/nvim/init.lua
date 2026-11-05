@@ -1,7 +1,6 @@
 -- VARIABLES
-local map = vim.keymap.set
-local hl = vim.api.nvim_set_hl
-local autocmd = vim.api.nvim_create_autocmd
+local tty = vim.fn.system('tty'):gsub("%s+", "")
+local is_tty = tty:match("^/dev/tty%d+$") ~= nil
 
 -- OPTIONS
 vim.opt.backup = false
@@ -19,7 +18,7 @@ vim.opt.fileencodings = {
 vim.opt.fileformats = { "unix", "dos" }
 vim.opt.backspace = { "start", "eol", "indent" }
 
-vim.api.nvim_exec("language en_US.UTF8", true)
+vim.api.nvim_exec("silent! language en_US.UTF8", true)
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
 
@@ -44,23 +43,23 @@ vim.opt.shortmess:append({I = true})
 vim.opt.mouse = "a"
 vim.opt.mousemodel = "extend"
 
--- KEYBINDS & AUTOCOMPLETE
-map({"i", "c"}, "<C-v>", "<C-R>+")     -- Paste from clipboard (Ctrl + V)
-map({"n", "v"}, "<C-v>", '"+gP')       -- Paste from the clipboard (Ctrl + V)
-map({"n", "v"}, "<C-c>", '"+y')        -- Copy to the clipboard (Ctrl + C)
-map({"v"}, "<C-x>", '"+x')             -- Cut to the clipboard (Ctrl + X)
-map("x", "p", [["_dP]])                -- Fix overriden text being copied to clipboard
-map({"n", "v"}, "<leader>d", [["_d]])  -- Fix deleted text being copied to clipboard
+-- KEYMAPING
+vim.keymap.set("v", "<C-S-c>", '"+y', { silent = true })          -- Copy to clipboard (Ctrl+Shift+C)
+vim.keymap.set({"n", "v"}, "<C-S-v>", '"+p', { silent = true })   -- Paste from the clipboard (Ctrl+Shift+V)
+vim.keymap.set("i", "<C-S-v>", '<ESC>"+pa', { silent = true })    -- Paste from the clipboard (Ctrl+Shift+V)
+vim.keymap.set("v", "<C-x>", '"+d', { silent = true })            -- Cut to clipboard (Ctrl+X)
+vim.keymap.set("n", "<C-z>", "u", { silent = true })              -- Undo (Ctrl + Z)
+vim.keymap.set("i", "<C-z>", "<ESC>ui", { silent = true })        -- Undo (Ctrl + Z)
+vim.keymap.set("i", "<C-r>", "<ESC><C-r>i", { silent = true })    -- Redo (Ctrl + Z)
 
-map("i", "'", "''<left>")
-map("i", '"', '""<left>')
-map("i", "(", "()<left>")
-map("i", "[", "[]<left>")
-map("i", "{", "{}<left>")
+vim.keymap.set("i", "'", "''<left>", { silent = true })           -- Autoclosing single quotes
+vim.keymap.set("i", '"', '""<left>', { silent = true })           -- Autoclosing double quotes
+vim.keymap.set("i", "(", "()<left>", { silent = true })           -- Autoclosing parentheses
+vim.keymap.set("i", "[", "[]<left>", { silent = true })           -- Autoclosing square brackets
+vim.keymap.set("i", "{", "{}<left>", { silent = true })           -- Autoclosing curly braces
 
 -- THEME
-if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
-    vim.api.nvim_exec("silent! colorscheme industry", true)
+if is_tty then
     vim.api.nvim_set_hl(0, "TabLineSel", { ctermbg = 12 })
     vim.api.nvim_set_hl(0, "TabLineFill", { ctermbg = 7 })
 else
@@ -90,7 +89,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt.fileformat = "dos"
     end
 })
-if vim.loop.os_uname().sysname == "Windows_NT" then
+if vim.uv.os_uname().sysname == "Windows_NT" then
     vim.api.nvim_create_autocmd("BufNewFile", {
         pattern = "*.txt",
         callback = function()
@@ -114,7 +113,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- HIGHLIGHTS
-if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
+if is_tty then
     vim.api.nvim_set_hl(0, "StatusLineNormal", { ctermbg = 10 })
     vim.api.nvim_set_hl(0, "StatusLineInsert", { ctermbg = 14 })
     vim.api.nvim_set_hl(0, "StatusLineVisual", { ctermbg = 13 })
@@ -136,10 +135,10 @@ local function vi_mode()
         ["no"] = "NORMAL",
         ["v"] = "VISUAL",
         ["V"] = "VISUAL LINE",
-        [""] = "VISUAL BLOCK",
+        ["\x16"] = "VISUAL BLOCK",
         ["s"] = "SELECT",
         ["S"] = "SELECT LINE",
-        [""] = "SELECT BLOCK",
+        ["\x13"] = "SELECT BLOCK",
         ["i"] = "INSERT",
         ["ic"] = "INSERT",
         ["R"] = "REPLACE",
@@ -181,18 +180,18 @@ end
 
 local function fileformat()
     if vim.bo.fileformat == "unix" then
-        return "Unix[LF]"
+        return "Unix(LF)"
     elseif vim.bo.fileformat == "dos" then
-        return "DOS[CRLF]"
+        return "DOS(CRLF)"
     elseif vim.bo.fileformat == "mac" then
-        return "Mac[CR]"
+        return "Mac(CR)"
     else
         return string.format("%s", vim.bo.fileformat):gsub("^%l", string.upper)
     end
 end
 
 local function clock()
-    if vim.loop.os_uname().sysname == "Linux" and vim.env.DISPLAY == nil then
+    if is_tty then
         return " %{strftime(\"%H:%M\")} "
     else
         return ""
