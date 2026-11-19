@@ -23,6 +23,18 @@ if [ "$XDG_DATA_HOME" = "" ]; then
     XDG_DATA_HOME="$HOME/.local/share"
 fi
 
+is_fedora() {
+    if [ -r /etc/os-release ]; then
+        . /etc/os-release
+
+        if [ "${ID:-}" = "fedora" ]; then
+            return 0
+        else
+            return 1
+        fi
+    fi
+}
+
 setup_aria2() {
     mkdir -p "$XDG_CONFIG_HOME/aria2"
     ARIA_CONFIG_PATH="$XDG_CONFIG_HOME/aria2"
@@ -60,9 +72,13 @@ setup_mpv() {
     MPV_CONFIG_PATH="$XDG_CONFIG_HOME/mpv"
     MPV_OPTS_PATH="$MPV_CONFIG_PATH/script-opts"
 
-    ln -sf "$DIR/config/mpv/mpv_linux.conf" "$MPV_CONFIG_PATH/mpv.conf"
     ln -sf "$DIR/config/mpv/input.conf" "$MPV_CONFIG_PATH/input.conf"
-    ln -sf "$DIR/config/mpv/script-opts/modernz_linux.conf" "$MPV_OPTS_PATH/modernz.conf"
+    if is_fedora() then
+        ln -sf "$DIR/config/mpv/mpv_legacy.conf" "$MPV_CONFIG_PATH/mpv.conf"
+        ln -sf "$DIR/config/mpv/script-opts/modernz_linux.conf" "$MPV_OPTS_PATH/modernz.conf"
+    else
+        ln -sf "$DIR/config/mpv/mpv_linux.conf" "$MPV_CONFIG_PATH/mpv.conf"
+    fi
 }
 
 setup_nvim() {
@@ -128,7 +144,7 @@ setup_ghostty() {
         ln -sf "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
     fi
 
-    cp -rf "$DIR/config/ghostty/themes/*" "$GTTY_CONFIG_PATH/themes/"
+    cp -rf "$DIR/config/ghostty/themes/." "$GTTY_CONFIG_PATH/themes/"
 }
 
 setup_ssh() {
@@ -154,9 +170,11 @@ setup_mpv_scripts() {
     mkdir -p "$MPV_CONFIG_PATH/scripts"
     mkdir -p "$MPV_CONFIG_PATH/fonts"
 
-    git clone "https://github.com/Samillion/ModernZ.git" "/tmp/ModernZ"
-    mv "/tmp/ModernZ/modernz.lua" "$MPV_CONFIG_PATH/scripts/"
-    mv "/tmp/ModernZ/modernz-icons.ttf" "$MPV_CONFIG_PATH/fonts/"
+    if is_fedora() then
+        git clone "https://github.com/Samillion/ModernZ.git" "/tmp/ModernZ"
+        mv "/tmp/ModernZ/modernz.lua" "$MPV_CONFIG_PATH/scripts/"
+        mv "/tmp/ModernZ/modernz-icons.ttf" "$MPV_CONFIG_PATH/fonts/"
+    fi
 
     git clone "https://github.com/cyberyurei2000/mpv-osc-clock.git" "/tmp/mpv-osc-clock"
     mv "/tmp/mpv-osc-clock/scripts/osc-clock.lua" "$MPV_CONFIG_PATH/scripts/"
@@ -166,6 +184,7 @@ if [ "$(uname -m)" = "aarch64" ]; then
     setup_nvim
     setup_zsh
     setup_fastfetch
+    setup_tmux
 else
     setup_aria2
     setup_fontconfig

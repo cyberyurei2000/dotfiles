@@ -1,38 +1,22 @@
 #Requires -Version 7.0
 
-# Variables
-$Identity = [Security.Principal.WindowsIdentity]::GetCurrent()
-$Principal = New-Object Security.Principal.WindowsPrincipal $Identity
-$IsAdmin = $Principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-
 # PROMPT
 function Prompt {
-    #$Domain = $([System.Security.Principal.WindowsIdentity]::GetCurrent().Name)
     $Path = $(Get-Location)
     $Path_arr = $Path.path.Split("\")
     if($Path_arr.count -gt 4) {
-        $Path = @($Path_arr[0], "..." + $Path_arr[-3,-2,-1]) -join "\"
+        $Path = @($Path_arr[0], "...") + $Path_arr[-3..-1] -join "\"
     }
-    $Explorer = $(Get-Process -Name explorer -ErrorAction SilentlyContinue)
+    $Explorer = [bool](Get-Process -Name 'explorer' -ErrorAction SilentlyContinue)
 
-    if($IsAdmin) {
-        if(!$Explorer) {
-            Write-Host $(Get-Date -Format "[HH:mm] ") -NoNewline
-        }
-        #Write-Host $($Domain + " ") -ForegroundColor "Blue" -NoNewline
-        Write-Host $($Path) -NoNewline
-        return " #> "
-    } else {
-        if(!$Explorer) {
-            Write-Host $(Get-Date -Format "[HH:mm] ") -NoNewline
-        }
-        #Write-Host $($Domain + " ") -ForegroundColor "Blue" -NoNewline
-        Write-Host $($Path) -NoNewline
-        return " ¥> "
+    if(-not $Explorer) {
+        Write-Host $(Get-Date -Format "[HH:mm] ") -NoNewline
     }
+    Write-Host $($Path) -NoNewline
+    return " ¥> "
 }
 
-# Options
+# OPTIONS
 Set-PSReadLineOption -PredictionSource None -ErrorAction SilentlyContinue
 Set-PSReadLineOption -Colors @{
     Command   = "`e[38;5;252m"
@@ -53,15 +37,15 @@ function Get-ChildItem {
     Microsoft.PowerShell.Management\Get-ChildItem @args | Format-Table -HideTableHeaders
 }
 
-# Autocomplete
+# AUTOCOMPLETE
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-# Shortcuts
+# SHORTCUTS
 Set-PSReadLineKeyHandler -Key Ctrl+u -Function BackwardDeleteLine
 
-# Alias
+# ALIAS
 Remove-Item Alias:curl -ErrorAction SilentlyContinue
 Remove-Item Alias:wget -ErrorAction SilentlyContinue
 Remove-Item Alias:mkdir -ErrorAction SilentlyContinue
@@ -73,7 +57,7 @@ Set-Alias -Name vim -Value nvim
 Set-Alias -Name vi -Value nvim
 Set-Alias -Name aria2 -Value aria2c
 
-# Custom commands
+# CUSTOM COMMMANDS
 function ll([String]$Path) {
     if($Path -eq "") {
         $Path = "."
@@ -129,7 +113,7 @@ function grep([String]$Regex, [String]$Path) {
 function activate {
     $VenvPath = ".\.venv\Scripts\Activate.ps1"
     if(Test-Path -Path $VenvPath) {
-        $VenvPath
+        & $VenvPath
     } else {
         Write-Host "pwsh: python environment not found!" -ForegroundColor "Red"
     }

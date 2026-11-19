@@ -3,7 +3,9 @@
     "workbench.colorCustomizations": {
         "[Tokyo Night Storm]": {
             "tab.activeBorderTop": "#3d59a1",
-            "tab.activeBorder": "#1f2335",
+            "tab.activeBorder": "#24283b",
+            "tab.unfocusedActiveBorder": "#24283b",
+            "editorGroupHeader.border": "#24283b",
             "widget.shadow": "#0000008c",
             // Contrast
             "foreground": "#959cbd",
@@ -32,8 +34,16 @@
             "gitDecoration.ignoredResourceForeground": "#696d87",
         }
     },
+    "workbench.sizeCustomizations": {
+        "panels.cornerRadius": 3,
+        "editorArea.cornerRadius": 3,
+        "primarySideBar.cornerRadius": 3,
+        "activityBar.cornerRadius": 3,
+        "toolsPanel.cornerRadius": 3,
+    },
     "workbench.colorTheme": "Tokyo Night Storm",
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.experimental.modernUI": true,
     "workbench.accounts.showAvatar": false,
     "workbench.browser.searchEngine": "none",
     "workbench.commandPalette.history": 0,
@@ -46,7 +56,6 @@
     "workbench.settings.editor": "json",
     "workbench.tips.enabled": false,
     "breadcrumbs.enabled": false,
-    "workbench.experimental.modernUI": true,
     // EDITOR
     "editor.bracketPairColorization.enabled": false,
     "editor.codeLens": false,
@@ -151,6 +160,7 @@
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.initialHint": false,
     "update.showReleaseNotes": false,
+    "workbench.browser.dimOnOverlay": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
     // PROGRAMMING LANGUAGES
     "html.format.indentInnerHtml": true,
