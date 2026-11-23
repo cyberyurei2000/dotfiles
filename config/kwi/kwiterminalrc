@@ -1,0 +1,12 @@
+[Appearance]
+AutoHideTabBar=true
+BackgroundBlur=true
+BackgroundOpacity=0.7
+ColorScheme=user:cb291308-3a40-41fd-847c-237655009747.colorscheme
+FontFamily=JetBrains Mono NL
+FontPointSize=10.5
+TabBarPosition=Bottom
+UseSystemFont=false
+
+[Behavior]
+CopyOnSelect=true

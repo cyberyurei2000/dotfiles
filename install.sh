@@ -72,12 +72,26 @@ setup_mpv() {
     MPV_CONFIG_PATH="$XDG_CONFIG_HOME/mpv"
     MPV_OPTS_PATH="$MPV_CONFIG_PATH/script-opts"
 
-    ln -sf "$DIR/config/mpv/input.conf" "$MPV_CONFIG_PATH/input.conf"
-    if is_fedora() then
-        ln -sf "$DIR/config/mpv/mpv_legacy.conf" "$MPV_CONFIG_PATH/mpv.conf"
-        ln -sf "$DIR/config/mpv/script-opts/modernz_linux.conf" "$MPV_OPTS_PATH/modernz.conf"
+    if [ $IS_COPY -eq 1 ]; then
+        cp -f "$DIR/config/mpv/input.conf" "$MPV_CONFIG_PATH/input.conf"
+        cp - f "$DIR/config/mpv/script-opts/osc-clock.conf" "$MPV_OPTS_PATH/osc-clock.conf"
+
+        if is_fedora() then
+            cp -f "$DIR/config/mpv/mpv_legacy.conf" "$MPV_CONFIG_PATH/mpv.conf"
+            cp -f "$DIR/config/mpv/script-opts/modernz_linux.conf" "$MPV_OPTS_PATH/modernz.conf"
+        else
+            cp -f "$DIR/config/mpv/mpv_linux.conf" "$MPV_CONFIG_PATH/mpv.conf"
+        fi
     else
-        ln -sf "$DIR/config/mpv/mpv_linux.conf" "$MPV_CONFIG_PATH/mpv.conf"
+        ln -sf "$DIR/config/mpv/input.conf" "$MPV_CONFIG_PATH/input.conf"
+        ln -sf "$DIR/config/mpv/script-opts/osc-clock.conf" "$MPV_OPTS_PATH/osc-clock.conf"
+
+        if is_fedora() then
+            ln -sf "$DIR/config/mpv/mpv_legacy.conf" "$MPV_CONFIG_PATH/mpv.conf"
+            ln -sf "$DIR/config/mpv/script-opts/modernz_linux.conf" "$MPV_OPTS_PATH/modernz.conf"
+        else
+            ln -sf "$DIR/config/mpv/mpv_linux.conf" "$MPV_CONFIG_PATH/mpv.conf"
+        fi
     fi
 }
 
@@ -133,18 +147,8 @@ setup_fastfetch() {
     fi
 }
 
-setup_ghostty() {
-    mkdir -p "$XDG_CONFIG_HOME/ghostty"
-    mkdir -p "$XDG_CONFIG_HOME/ghostty/themes"
-    GTTY_CONFIG_PATH="$XDG_CONFIG_HOME/ghostty"
-
-    if [ $IS_COPY -eq 1 ]; then
-        cp -f "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
-    else
-        ln -sf "$DIR/config/ghostty/config" "$GTTY_CONFIG_PATH/config"
-    fi
-
-    cp -rf "$DIR/config/ghostty/themes/." "$GTTY_CONFIG_PATH/themes/"
+setup_kwi() {
+    cp -f "$DIR/config/kwi/kwiterminalrc" "$XDG_CONFIG_HOME/kwiterminalrc"
 }
 
 setup_ssh() {
@@ -152,13 +156,17 @@ setup_ssh() {
     SSH_CONFIG_PATH="$HOME/.ssh"
 
     if [ -f "$DIR/config/ssh/config_linux" ]; then
-        ln -sf "$DIR/config/ssh/config_linux" "$SSH_CONFIG_PATH/config"
+        if [ $IS_COPY -eq 1 ]; then
+            cp -f "$DIR/config/ssh/config_linux" "$SSH_CONFIG_PATH/config"
+        else
+            ln -sf "$DIR/config/ssh/config_linux" "$SSH_CONFIG_PATH/config"
+        fi
     else
-        printf "ERROR: Failed to setup SSH! Configuration file not found."
+        printf "SSH configuration file not found, skipping..."
     fi
 }
 
-setup_wineprefix() {
+setup_winedir() {
     if [ ! -d "$XDG_DATA_HOME/wine" ]; then
         mkdir -p "$XDG_DATA_HOME/wine"
     fi
@@ -194,8 +202,8 @@ else
     setup_zsh
     setup_tmux
     setup_fastfetch
-    setup_ghostty
+    setup_kwi
     setup_ssh
-    setup_wineprefix
+    setup_winedir
     setup_mpv_scripts
 fi

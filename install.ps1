@@ -49,9 +49,11 @@ function Set-Mpv {
     if($null -ne $IsDiskC) {
         New-Item -Path "$MpvConfigPath" -Name "mpv.conf" -ItemType "HardLink" -Target "$Dir\config\mpv\mpv_windows.conf" -Force
         New-Item -Path "$MpvConfigPath" -Name "input.conf" -ItemType "HardItem" -Target "$Dir\config\mpv\input.conf" -Force
+        New-Item -Path "$MpvConfigPath" -Name "osc-clock.conf" -ItemType "HardItem" -Target "$Dir\config\mpv\script-opts\osc-clock.conf" -Force
     } else {
         Copy-Item -Path "$Dir\config\mpv\mpv_windows.conf" -Destination "$MpvConfigPath\mpv.conf" -Force
         Copy-Item -Path "$Dir\config\mpv\input.conf" -Destination "$MpvConfigPath\input.conf" -Force
+        Copy-Item -Path "$Dir\config\mpv\script-opts\osc-clock.conf" -Destination "$MpvConfigPath\script-opts\osc-clock.conf" -Force
     }
 }
 

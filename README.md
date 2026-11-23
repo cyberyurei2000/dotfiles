@@ -1,6 +1,6 @@
 # dotfiles
 
-My configuration files and scripts for Windows and Linux.
+My configuration files for Windows and Linux.
 
 ### Targets
 
@@ -8,7 +8,7 @@ My configuration files and scripts for Windows and Linux.
 - fastfetch
 - fontconfig
 - git
-- ghostty
+- kwi
 - mpv
 - nvim
 - pwsh (PowerShell 7+)
@@ -50,14 +50,13 @@ setup_git
 setup_nvim
 setup_zsh
 #setup_mpv_scripts
-#setup_nvim_theme
 ```
 
 ### Screenshots
 
-![screenshot](./docs/screenshot_linux.png)
+![screenshot](./docs/screenshot_linux.webp)
 
-![screenshot](./docs/screenshot_windows.png)
+![screenshot](./docs/screenshot_windows.webp)
 
 ### License
 
