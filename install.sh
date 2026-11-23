@@ -148,7 +148,11 @@ setup_fastfetch() {
 }
 
 setup_kwi() {
-    cp -f "$DIR/config/kwi/kwiterminalrc" "$XDG_CONFIG_HOME/kwiterminalrc"
+    if is_fedora() then
+        cp -f "$DIR/config/kwi/kwiterminalrc" "$HOME/.var/app/org.kde.kwi/config/kwiterminalrc"
+    else
+        cp -f "$DIR/config/kwi/kwiterminalrc" "$XDG_CONFIG_HOME/kwiterminalrc"
+    fi
 }
 
 setup_ssh() {
